@@ -20,11 +20,14 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "assets/semantic/semantic.min.css"
+        "assets/semantic/semantic.min.css",
+        "assets/slick-1.8.0/slick/slick.css",
+        "assets/slick-1.8.0/slick/slick-theme.css"
       ],
       "scripts": [
         "assets/scripts/jquery.min.js",
-        "assets/semantic/semantic.min.js"
+        "assets/semantic/semantic.min.js",
+        "assets/slick-1.8.0/slick/slick.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

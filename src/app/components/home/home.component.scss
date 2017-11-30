@@ -1,17 +1,24 @@
 .content {
-  width: calc(100% - 300px);
-  margin: 0 150px;
+  display: grid;
+  grid-template-columns: [margin-left] 150px [content] auto [margin-right] 150px;
+  grid-template-rows: [title] 400px [content] auto;
 
   .top-section {
-    width: 100%;
-    min-height: 300px;
-    background: blue;
+    background: #cdcdcd;
+    height: 100%;
   }
 
-  .side-section {
-    width: 100%;
-    min-height: 300px;
-    background: green;
-  }
+  .main-content {
+    display: flex;
+    flex-direction: row;
 
+    .main-section {
+      width: 70%;
+      background: #cdcdcd;
+    }
+    .side-section {
+      width: 30%;
+      background: #fafafa;
+    }
+  }
 }

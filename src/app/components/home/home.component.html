@@ -1,12 +1,37 @@
-<div class="ui grid content">
-  <div class="sixteen wide column">
-    <div class="top-section"></div>
+<div class="content">
+  <div>
+
   </div>
-  <div class="ten wide column">
-    <app-article *ngFor="let article of articles" [article]="article"></app-article>
-    <!--<div class="main-section"></div>-->
+  <div>
+    <div class="top-section">
+      <h1>TOP CONTENT</h1>
+    </div>
   </div>
-  <div class="six wide column">
-    <div class="side-section"></div>
+  <div>
+
   </div>
+  <div>
+
+  </div>
+  <div class="main-content">
+    <div class="main-section">
+      <app-article *ngFor="let article of articles" [article]="article"></app-article>
+    </div>
+    <div class="side-section">
+      <h1>SIDE CONTENT</h1>
+    </div>
+  </div>
+
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.main-slider').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear'
+    });
+  });
+</script>
