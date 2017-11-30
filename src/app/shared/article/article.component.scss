@@ -1,0 +1,9 @@
+.article {
+  margin-bottom: 20px !important;
+  display: flex;
+  flex-direction: row;
+
+  .article-image {
+    height: 300px;
+  }
+}

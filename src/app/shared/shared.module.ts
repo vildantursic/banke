@@ -22,7 +22,10 @@ import { ArticleMainComponent } from './article-main/article-main.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ArticleComponent,
+    ArticleSmallComponent,
+    ArticleMainComponent
   ]
 })
 export class SharedModule { }

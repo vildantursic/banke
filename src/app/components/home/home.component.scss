@@ -1,0 +1,17 @@
+.content {
+  width: calc(100% - 300px);
+  margin: 0 150px;
+
+  .top-section {
+    width: 100%;
+    min-height: 300px;
+    background: blue;
+  }
+
+  .side-section {
+    width: 100%;
+    min-height: 300px;
+    background: green;
+  }
+
+}
