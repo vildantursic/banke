@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { ArticleComponent } from './article/article.component';
+import { ArticleSmallComponent } from './article-small/article-small.component';
+import { ArticleMainComponent } from './article-main/article-main.component';
 
 @NgModule({
   imports: [
@@ -12,7 +15,10 @@ import { HeaderComponent } from './header/header.component';
   ],
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ArticleComponent,
+    ArticleSmallComponent,
+    ArticleMainComponent
   ],
   exports: [
     HeaderComponent,
