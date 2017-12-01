@@ -1,3 +1,19 @@
 .article {
   margin-bottom: 20px !important;
+  background-color: #cdcdcd;
+  width: 100%;
+  height: 100px;
+
+  .article-content{
+    margin-left: 15px;
+    .article-text{
+
+    }
+    .article-title {
+
+    }
+    .article-date{
+      margin-bottom: 15px;
+    }
+  }
 }

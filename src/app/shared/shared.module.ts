@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleSmallComponent } from './article-small/article-small.component';
 import { ArticleMainComponent } from './article-main/article-main.component';
+import { SocialComponent } from './social/social.component';
+import { PartnersComponent } from './partners/partners.component';
 
 @NgModule({
   imports: [
@@ -18,14 +20,18 @@ import { ArticleMainComponent } from './article-main/article-main.component';
     FooterComponent,
     ArticleComponent,
     ArticleSmallComponent,
-    ArticleMainComponent
+    ArticleMainComponent,
+    SocialComponent,
+    PartnersComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     ArticleComponent,
     ArticleSmallComponent,
-    ArticleMainComponent
+    ArticleMainComponent,
+    SocialComponent,
+    PartnersComponent
   ]
 })
 export class SharedModule { }

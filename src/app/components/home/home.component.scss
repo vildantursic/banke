@@ -1,13 +1,22 @@
-:host {
-  display: block;
-}
-
 .sidebar {
   grid-area: sidebar;
+
+  .article-section-title {
+    width: 100%;
+    height: auto;
+    background: #222222;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
 }
 
 .main {
   grid-area: main;
+}
+
+.ad {
+  grid-area: ad;
 }
 
 .header {
@@ -17,11 +26,11 @@
 }
 
 .wrapper {
-  margin: 0 150px;
+  margin: 0 350px;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "header  header  header"
+  grid-template-areas: "header header header"
                        "main main sidebar";
 
   @media (max-width: 800px) {

@@ -4,6 +4,25 @@
     <app-article *ngFor="let article of articles" [article]="article"></app-article>
   </div>
   <div class="sidebar">
+    <app-partners></app-partners>
+    <div class="ui banner test ad" data-text="Banner"></div>
+
+    <div class="article-section-title">
+      <h3>Some title 1</h3>
+    </div>
     <app-article-small  *ngFor="let article of articlesSmall"></app-article-small>
+    <div class="ui banner test ad" data-text="Banner"></div>
+
+    <div class="article-section-title">
+      <h3>Some title 2</h3>
+    </div>
+    <app-article-small  *ngFor="let article of articlesSmall"></app-article-small>
+    <div class="ui banner test ad" data-text="Banner"></div>
+
+    <div class="article-section-title">
+      <h3>Some title 3</h3>
+    </div>
+    <app-article-small  *ngFor="let article of articlesSmall"></app-article-small>
+    <div class="ui banner test ad" data-text="Banner"></div>
   </div>
 </div>
