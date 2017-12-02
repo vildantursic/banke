@@ -1,13 +1,11 @@
 <div class="ui sticky left">
-  <!--<div class="ui wide skyscraper test ad" data-text="Wide Skyscraper"></div>-->
+  This is a sticky content
 </div>
 <div id="context">
   <div class="wrapper">
-    <div class="header">
-      <app-slider></app-slider>
-    </div>
+    <div class="header">Header</div>
     <div class="main">
-      <app-article *ngFor="let article of articles | filterNews:['finansije']" [article]="article"></app-article>
+      <app-article *ngFor="let article of articles" [article]="article"></app-article>
     </div>
     <div class="sidebar">
       <app-partners></app-partners>

@@ -1,3 +1,13 @@
 .fix-header {
   border-radius: 0;
 }
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  img{
+    height: 25px;
+    margin: auto;
+  }
+}

@@ -9,6 +9,7 @@ import { ArticleSmallComponent } from './article-small/article-small.component';
 import { ArticleMainComponent } from './article-main/article-main.component';
 import { SocialComponent } from './social/social.component';
 import { PartnersComponent } from './partners/partners.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { PartnersComponent } from './partners/partners.component';
     ArticleSmallComponent,
     ArticleMainComponent,
     SocialComponent,
-    PartnersComponent
+    PartnersComponent,
+    SliderComponent
   ],
   exports: [
     HeaderComponent,
@@ -31,7 +33,8 @@ import { PartnersComponent } from './partners/partners.component';
     ArticleSmallComponent,
     ArticleMainComponent,
     SocialComponent,
-    PartnersComponent
+    PartnersComponent,
+    SliderComponent
   ]
 })
 export class SharedModule { }

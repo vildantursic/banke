@@ -12,14 +12,21 @@
   }
   .article-content{
     margin-left: 15px;
-    .article-text{
 
-    }
     .article-title {
 
     }
+    .article-text{
+      height: 60px;
+      overflow: hidden;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+    }
     .article-date{
       margin-bottom: 15px;
+    }
+    .article-category {
+      margin-right: 5px;
     }
   }
 }
