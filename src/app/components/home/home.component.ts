@@ -1,4 +1,5 @@
 import {Component, AfterViewInit} from '@angular/core';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,14 @@ export class HomeComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
+    setTimeout(function () {
+      jQuery('.ui.sticky')
+        .sticky({
+          offset       : 450,
+          bottomOffset : 50,
+          context: '#context'
+        })
+    }, 3000)
   }
 
 }
