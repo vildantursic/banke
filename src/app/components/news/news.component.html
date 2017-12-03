@@ -1,33 +1,33 @@
 <div class="ui sticky left">
-  This is a sticky content
+  <!--<div class="ui wide skyscraper test ad" data-text="Wide Skyscraper"></div>-->
 </div>
 <div id="context">
   <div class="wrapper">
-    <div class="header">Header</div>
+    <div class="header">
+      <app-slider></app-slider>
+    </div>
     <div class="main">
-      <app-article *ngFor="let article of articles" [article]="article"></app-article>
+      {{article.content}}
     </div>
     <div class="sidebar">
       <app-partners></app-partners>
       <div class="ui banner test ad" data-text="Banner"></div>
 
-      <div class="article-section-title">
-        <h3>Some title 1</h3>
-      </div>
-      <app-article-small *ngFor="let article of articlesSmall"></app-article-small>
+      <!-- VIDEO -->
+      <app-mini-header [header]="'Video'"></app-mini-header>
+      <app-article-small *ngFor="let article of news"></app-article-small>
       <div class="ui banner test ad" data-text="Banner"></div>
 
-      <div class="article-section-title">
-        <h3>Some title 2</h3>
-      </div>
-      <app-article-small *ngFor="let article of articlesSmall"></app-article-small>
+      <!-- KOLUMNE -->
+      <app-mini-header [header]="'Kolumne'"></app-mini-header>
+      <app-kolumna *ngFor="let article of interviews"></app-kolumna>
       <div class="ui banner test ad" data-text="Banner"></div>
 
-      <div class="article-section-title">
-        <h3>Some title 3</h3>
-      </div>
-      <app-article-small *ngFor="let article of articlesSmall"></app-article-small>
+      <!-- GLOBAL NEWS -->
+      <app-mini-header [header]="'Vijesti iz svijeta'"></app-mini-header>
+      <app-global-news *ngFor="let article of globalNews"></app-global-news>
       <div class="ui banner test ad" data-text="Banner"></div>
+
     </div>
     <!-- Long flowing text content !-->
   </div>

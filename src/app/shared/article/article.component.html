@@ -3,7 +3,9 @@
     <img class="article-image" src="assets/images/steve.jpg" alt="">
   </div>
   <div class="article-content">
-    <h1 class="article-title">{{article.title}}</h1>
+    <a href="/news">
+      <h1 class="article-title">{{article.title}}</h1>
+    </a>
     <div class="article-date">
       {{article.date}} <a class="article-category" *ngFor="let category of article.categories">{{category}}</a>
     </div>

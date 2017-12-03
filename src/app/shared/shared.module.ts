@@ -10,6 +10,9 @@ import { ArticleMainComponent } from './article-main/article-main.component';
 import { SocialComponent } from './social/social.component';
 import { PartnersComponent } from './partners/partners.component';
 import { SliderComponent } from './slider/slider.component';
+import { MiniHeaderComponent } from './mini-header/mini-header.component';
+import { KolumnaComponent } from './kolumna/kolumna.component';
+import { GlobalNewsComponent } from './global-news/global-news.component';
 
 @NgModule({
   imports: [
@@ -24,7 +27,10 @@ import { SliderComponent } from './slider/slider.component';
     ArticleMainComponent,
     SocialComponent,
     PartnersComponent,
-    SliderComponent
+    SliderComponent,
+    MiniHeaderComponent,
+    KolumnaComponent,
+    GlobalNewsComponent
   ],
   exports: [
     HeaderComponent,
@@ -34,7 +40,10 @@ import { SliderComponent } from './slider/slider.component';
     ArticleMainComponent,
     SocialComponent,
     PartnersComponent,
-    SliderComponent
+    SliderComponent,
+    MiniHeaderComponent,
+    KolumnaComponent,
+    GlobalNewsComponent
   ]
 })
 export class SharedModule { }

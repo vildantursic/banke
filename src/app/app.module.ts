@@ -10,6 +10,8 @@ import { NewsComponent } from './components/news/news.component';
 
 import { FilterNewsPipe } from './pipes/filter-news/filter-news.pipe';
 
+import { FiltersService } from './services/filters/filters.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { FilterNewsPipe } from './pipes/filter-news/filter-news.pipe';
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    FiltersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import {Component, AfterViewInit} from '@angular/core';
+import {FiltersService} from "../../services/filters/filters.service";
 declare let jQuery: any;
 
 @Component({
@@ -46,9 +47,11 @@ export class HomeComponent implements AfterViewInit {
       author: 'Irma Rustemovic'
     }
   ];
-  articlesSmall = [1, 2, 3, 4, 5];
+  news = [1, 2, 3, 4, 5];
+  interviews = [1, 2, 3];
+  globalNews = [1, 2, 3];
 
-  constructor() { }
+  constructor(private filterService: FiltersService) { }
 
   ngAfterViewInit() {
     jQuery('.ui.sticky')
@@ -57,6 +60,10 @@ export class HomeComponent implements AfterViewInit {
         bottomOffset : 50,
         context: '#context'
       })
+  }
+
+  getFilters(): Array<any> {
+    return this.filterService.getFilters();
   }
 
 }

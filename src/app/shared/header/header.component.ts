@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {FiltersService} from "../../services/filters/filters.service";
+declare let jQuery: any;
 
 @Component({
   selector: 'app-header',
@@ -17,22 +19,40 @@ export class HeaderComponent implements OnInit {
     },
     {
       id: 1,
-      active: false,
+      active: true,
       name: 'biznis'
     },
     {
       id: 2,
-      active: false,
+      active: true,
       name: 'finansije'
     }
   ]);
 
-  constructor() {
+  constructor(private filterService: FiltersService) {
   }
 
   ngOnInit() {
+    this.filterService.removeFilter();
     this.filters.subscribe((filters) => {
-      console.log(filters);
+      filters.forEach(filter => {
+        if (filter.active) {
+          this.filterService.setFilter(filter);
+        }
+      })
+    })
+
+    jQuery('.ui.dropdown').dropdown()
+  }
+
+  setFilter(): void {
+    this.filterService.removeFilter();
+    this.filters.subscribe((filters) => {
+      filters.forEach(filter => {
+        if (filter.active) {
+          this.filterService.setFilter(filter);
+        }
+      })
     })
   }
 
