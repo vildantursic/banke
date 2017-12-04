@@ -17,7 +17,7 @@ import { GlobalNewsComponent } from './global-news/global-news.component';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [
     HeaderComponent,

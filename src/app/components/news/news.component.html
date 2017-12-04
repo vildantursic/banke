@@ -3,11 +3,15 @@
 </div>
 <div id="context">
   <div class="wrapper">
-    <div class="header">
-      <app-slider></app-slider>
+    <div class="header" [ngStyle]="{'background': 'url(' + article.image + ') center no-repeat', 'background-size': 'cover'}">
+      <div class="title">
+        <h1>{{article.title}}</h1>
+        <p>{{article.date}}</p>
+        <p><b>written by:</b> Someone</p>
+      </div>
     </div>
     <div class="main">
-      {{article.content}}
+      <div [innerHTML]="article.content"></div>
     </div>
     <div class="sidebar">
       <app-partners></app-partners>

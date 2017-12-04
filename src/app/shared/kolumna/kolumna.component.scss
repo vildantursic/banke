@@ -8,6 +8,11 @@
   grid-template-areas: "mini-img mini-title"
   "mini-img mini-date";
 
+  @media (max-width: 800px) {
+    margin: 20px;
+    width: calc(100% - 40px);
+  }
+
   .mini-img {
     grid-area: mini-img;
     display: block;

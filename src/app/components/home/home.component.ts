@@ -11,6 +11,8 @@ export class HomeComponent implements AfterViewInit {
 
   articles = [
     {
+      image: 'assets/images/steve.jpg',
+      slug: 'neka_vijest',
       title: 'Neka vijest',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cum deleniti eius eos esse facere itaque nemo quam soluta voluptate! Aliquid asperiores aut consequuntur eos laborum mollitia quaerat sequi voluptatibus?',
       categories: [
@@ -20,6 +22,8 @@ export class HomeComponent implements AfterViewInit {
       author: 'Irma Rustemovic'
     },
     {
+      image: 'assets/images/steve.jpg',
+      slug: 'neka_vijest',
       title: 'Neka vijest',
       content: 'Lorem ipsum dolor sit amet,speriores aut consequuntur eos laborum mollitia quaerat sequi voluptatibus?',
       categories: [
@@ -29,6 +33,8 @@ export class HomeComponent implements AfterViewInit {
       author: 'Vildan Tursic'
     },
     {
+      image: 'assets/images/steve.jpg',
+      slug: 'neka_vijest',
       title: 'Neka vijest',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cum delenere itaque nemo quam soluta voluptate! Aliq eos laborum mollitia quaerat sequi voluptatibus?',
       categories: [
@@ -38,6 +44,8 @@ export class HomeComponent implements AfterViewInit {
       author: 'Vildan Tursic'
     },
     {
+      image: 'assets/images/steve.jpg',
+      slug: 'neka_vijest',
       title: 'Neka vijest',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cum deleniti eius eos esse fauuntur eos laborum mollitia quaerat sequi voluptatibus? psum dolor sit amet, consectetur adipisicing elit. Adipisci cum deleniti eius eos esse fauuntur eos laborum mollitia quaerat sequi voluptatibus? psum dolor sit amet, consectetur adipisicing elit. Adipisci cum deleniti eius eos esse fauuntur eos laborum mollitia quaerat sequi voluptatibus? psum dolor sit amet, consectetur adipisicing elit. Adipisci cum deleniti eius eos esse fauuntur eos laborum mollitia quaerat sequi voluptatibus? psum dolor sit amet, consectetur adipisicing elit. Adipisci cum deleniti eius eos esse fauuntur eos laborum mollitia quaerat sequi voluptatibus? psum dolor sit amet, consectetur adipisicing elit. Adipisci cum deleniti eius eos esse fauuntur eos laborum mollitia quaerat sequi voluptatibus?',
       categories: [
