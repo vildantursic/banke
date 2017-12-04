@@ -7,25 +7,43 @@ import { HeaderComponent } from './header/header.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleSmallComponent } from './article-small/article-small.component';
 import { ArticleMainComponent } from './article-main/article-main.component';
+import { SocialComponent } from './social/social.component';
+import { PartnersComponent } from './partners/partners.component';
+import { SliderComponent } from './slider/slider.component';
+import { MiniHeaderComponent } from './mini-header/mini-header.component';
+import { KolumnaComponent } from './kolumna/kolumna.component';
+import { GlobalNewsComponent } from './global-news/global-news.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
     ArticleComponent,
     ArticleSmallComponent,
-    ArticleMainComponent
+    ArticleMainComponent,
+    SocialComponent,
+    PartnersComponent,
+    SliderComponent,
+    MiniHeaderComponent,
+    KolumnaComponent,
+    GlobalNewsComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     ArticleComponent,
     ArticleSmallComponent,
-    ArticleMainComponent
+    ArticleMainComponent,
+    SocialComponent,
+    PartnersComponent,
+    SliderComponent,
+    MiniHeaderComponent,
+    KolumnaComponent,
+    GlobalNewsComponent
   ]
 })
 export class SharedModule { }

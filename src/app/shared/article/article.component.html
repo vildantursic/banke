@@ -1,11 +1,17 @@
 <div class="ui raised segment article">
-  <div class="ui grid">
-    <div class="six wide column">
-      <img class="article-image" src="assets/images/steve.jpg" alt="">
+  <div class="">
+    <img class="article-image" [src]="article.image" alt="">
+  </div>
+  <div class="article-content">
+    <a routerLink="/news/{{article.slug}}">
+      <h1 class="article-title">{{article.title}}</h1>
+    </a>
+    <div class="article-date">
+      {{article.date}} <a class="article-category" *ngFor="let category of article.categories">{{category}}</a>
     </div>
-    <div class="ten wide column">
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    <p class="article-text">{{article.content}}</p>
+    <div class="article-social">
+      <app-social></app-social>
     </div>
   </div>
-
 </div>

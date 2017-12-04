@@ -1,0 +1,42 @@
+.mini-article {
+  margin-bottom: 20px !important;
+  background-color: #cdcdcd;
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 80px calc(100% - 80px);
+  grid-template-areas: "mini-img mini-title"
+                       "mini-img mini-date";
+
+  @media (max-width: 800px) {
+    margin: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .mini-img {
+    grid-area: mini-img;
+    display: block;
+    width: 100%;
+    position: relative;
+    .mini-play{
+      position: absolute;
+      width: 25px;
+      top: calc(50% - (25px / 2));
+      left: calc(50% - (25px / 2));
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .mini-title {
+    grid-area: mini-title;
+    margin: 0 0 0 15px;
+    height: 40px;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+  .mini-date {
+    grid-area: mini-date;
+    margin: 0 0 0 15px;
+  }
+}

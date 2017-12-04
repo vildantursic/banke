@@ -1,0 +1,38 @@
+<div class="ui sticky left">
+  <!--<div class="ui wide skyscraper test ad" data-text="Wide Skyscraper"></div>-->
+</div>
+<div id="context">
+  <div class="wrapper">
+    <div class="header" [ngStyle]="{'background': 'url(' + article.image + ') center no-repeat', 'background-size': 'cover'}">
+      <div class="title">
+        <h1>{{article.title}}</h1>
+        <p>{{article.date}}</p>
+        <p><b>written by:</b> Someone</p>
+      </div>
+    </div>
+    <div class="main">
+      <div [innerHTML]="article.content"></div>
+    </div>
+    <div class="sidebar">
+      <app-partners></app-partners>
+      <div class="ui banner test ad" data-text="Banner"></div>
+
+      <!-- VIDEO -->
+      <app-mini-header [header]="'Video'"></app-mini-header>
+      <app-article-small *ngFor="let article of news"></app-article-small>
+      <div class="ui banner test ad" data-text="Banner"></div>
+
+      <!-- KOLUMNE -->
+      <app-mini-header [header]="'Kolumne'"></app-mini-header>
+      <app-kolumna *ngFor="let article of interviews"></app-kolumna>
+      <div class="ui banner test ad" data-text="Banner"></div>
+
+      <!-- GLOBAL NEWS -->
+      <app-mini-header [header]="'Vijesti iz svijeta'"></app-mini-header>
+      <app-global-news *ngFor="let article of globalNews"></app-global-news>
+      <div class="ui banner test ad" data-text="Banner"></div>
+
+    </div>
+    <!-- Long flowing text content !-->
+  </div>
+</div>

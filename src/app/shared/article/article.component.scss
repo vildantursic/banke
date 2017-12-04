@@ -3,7 +3,37 @@
   display: flex;
   flex-direction: row;
 
+  @media (max-width: 512px) {
+    flex-direction: column;
+    margin: 20px;
+
+    .article-image {
+      height: auto !important;
+      width: 100%;
+    }
+  }
+
   .article-image {
-    height: 300px;
+    height: 200px;
+  }
+  .article-content{
+    margin-left: 15px;
+
+    .article-title {
+
+    }
+    .article-text{
+      height: 60px;
+      overflow: hidden;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+    }
+    .article-date{
+      margin-bottom: 15px;
+    }
+    .article-category {
+      margin-left: 5px;
+    }
   }
 }
+

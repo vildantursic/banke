@@ -8,9 +8,13 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ArticleComponent implements OnInit {
 
   @Input() article: {
-    id: number,
     title: string,
-    body: string
+    slug: string,
+    content: string,
+    categories: string[],
+    author: string,
+    date: string,
+    image: string
   };
 
   constructor() { }

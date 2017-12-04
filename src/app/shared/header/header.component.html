@@ -1,11 +1,17 @@
-<div class="ui menu fix-header">
-  <a class="item" routerLink="home" routerLinkActive="active">
-    Home
-  </a>
-  <a class="item" routerLink="news" routerLinkActive="active">
-    News
-  </a>
+<div class="ui menu fixed fix-header">
+<div class="logo" routerLink="home"><img src="assets/images/banke_log.png" alt=""></div>
   <div class="right menu">
-
+    <div class="ui multiple dropdown dropdown-fix">
+      <input type="hidden" name="filters">
+      <span class="text">Filter Posts</span>
+      <div class="menu">
+        <div class="item" *ngFor="let filter of filters | async">
+          <div class="ui checkbox">
+            <input type="checkbox" name="example" [checked]="filter.active" (change)="filter.active = !filter.active; setFilter()">
+            <label>{{filter.name}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
