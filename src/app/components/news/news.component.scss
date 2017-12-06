@@ -29,14 +29,18 @@
 }
 
 .wrapper {
-  margin: 0 350px;
+  margin: 0 15%;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "header header header"
   "main main sidebar";
 
-  @media (max-width: 800px) {
+  @media (max-width: 1400px) {
+    margin: 0 5%;
+  }
+
+  @media (max-width: 1080px) {
     margin: 0;
     width: calc(100% - 20px);
     grid-template-columns: 1fr;
