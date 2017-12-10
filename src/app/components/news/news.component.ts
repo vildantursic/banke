@@ -24,9 +24,10 @@ export class NewsComponent implements AfterViewInit {
     date: '19.04.1993',
     author: 'Vildan Tursic'
   };
-  news = [1, 2, 3, 4, 5];
+  news = [1, 2, 3];
   interviews = [1, 2, 3];
   globalNews = [1, 2, 3];
+  images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
   constructor() { }
 

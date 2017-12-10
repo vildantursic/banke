@@ -13,6 +13,8 @@ import { SliderComponent } from './slider/slider.component';
 import { MiniHeaderComponent } from './mini-header/mini-header.component';
 import { KolumnaComponent } from './kolumna/kolumna.component';
 import { GlobalNewsComponent } from './global-news/global-news.component';
+import { MiniSliderComponent } from './mini-slider/mini-slider.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import { GlobalNewsComponent } from './global-news/global-news.component';
     SliderComponent,
     MiniHeaderComponent,
     KolumnaComponent,
-    GlobalNewsComponent
+    GlobalNewsComponent,
+    MiniSliderComponent,
+    SubscribeComponent
   ],
   exports: [
     HeaderComponent,
@@ -43,7 +47,10 @@ import { GlobalNewsComponent } from './global-news/global-news.component';
     SliderComponent,
     MiniHeaderComponent,
     KolumnaComponent,
-    GlobalNewsComponent
+    GlobalNewsComponent,
+    MiniSliderComponent,
+    SubscribeComponent
+
   ]
 })
 export class SharedModule { }

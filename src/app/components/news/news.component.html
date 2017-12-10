@@ -11,11 +11,17 @@
       </div>
     </div>
     <div class="main">
-      <div [innerHTML]="article.content"></div>
+      <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
+      <div class="main-content">
+        <div [innerHTML]="article.content"></div>
+      </div>
     </div>
     <div class="sidebar">
-      <app-partners></app-partners>
+      <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
+      <app-mini-slider [images]="images"></app-mini-slider>
+      <app-mini-slider [images]="images" [orientation]="'right'"></app-mini-slider>
       <div class="ui banner test ad" data-text="Banner"></div>
+
 
       <!-- VIDEO -->
       <app-mini-header [header]="'Video'"></app-mini-header>

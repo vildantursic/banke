@@ -7,11 +7,14 @@
       <app-slider></app-slider>
     </div>
     <div class="main">
+      <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
       <!--<app-article *ngFor="let article of articles | filterNews:getFilters()" [article]="article"></app-article>-->
       <app-article *ngFor="let article of articles" [article]="article"></app-article>
     </div>
     <div class="sidebar">
-      <app-partners></app-partners>
+      <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
+      <app-mini-slider [images]="images"></app-mini-slider>
+      <app-mini-slider [images]="images" [orientation]="'right'"></app-mini-slider>
       <div class="ui banner test ad" data-text="Banner"></div>
 
       <!-- VIDEO -->
