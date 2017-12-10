@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import {AppRoutingModule} from './app.router';
 import {SharedModule} from './shared/shared.module';
 
@@ -22,7 +24,8 @@ import { FiltersService } from './services/filters/filters.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
   ],
   providers: [
     FiltersService

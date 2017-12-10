@@ -1,5 +1,14 @@
-<app-header></app-header>
+<div class="ui right sidebar inverted vertical menu">
+  <a *ngFor="let filter of filters" class="item">
+    <button class="ui button full-size"
+            [ngClass]="{'toggle': filter.active}"
+            (click)="onFilterClicked(filter.id)">{{filter.name}}</button>
+  </a>
+</div>
+<div class="pusher">
+  <app-header (onMenuClick)="showMenu($event)"></app-header>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>

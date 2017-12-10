@@ -9,7 +9,10 @@
     <div class="main">
       <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
       <!--<app-article *ngFor="let article of articles | filterNews:getFilters()" [article]="article"></app-article>-->
-      <app-article *ngFor="let article of articles" [article]="article"></app-article>
+      <app-article *ngFor="let article of articles | paginate: { itemsPerPage: 10, currentPage: p }" [article]="article"></app-article>
+      <div class="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
     </div>
     <div class="sidebar">
       <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>

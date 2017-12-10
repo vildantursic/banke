@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare let jQuery: any;
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,37 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  filters = [
+    {
+      id: 0,
+      active: false,
+      name: 'banke'
+    },
+    {
+      id: 1,
+      active: true,
+      name: 'biznis'
+    },
+    {
+      id: 2,
+      active: true,
+      name: 'finansije'
+    }
+  ]
+
+  constructor() {
+
+  }
+
+  showMenu(event): void {
+    jQuery('.ui.sidebar').sidebar('toggle');
+  }
+
+  onFilterClicked(id): void {
+    this.filters.map(filter => {
+      if (filter.id === id) {
+        filter.active = !filter.active ? true : false;
+      }
+    })
+  }
 }
