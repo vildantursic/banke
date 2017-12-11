@@ -28,9 +28,7 @@ export class AppComponent {
 
   constructor(private router: Router) {
     router.events.subscribe((val) => {
-      setTimeout(() => {
-        jQuery('html').animate({ scrollTop: 0 });
-      }, 0)
+      window.scrollTo(0, 0);
     });
   }
 

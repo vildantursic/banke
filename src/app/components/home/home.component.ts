@@ -187,4 +187,8 @@ export class HomeComponent implements AfterViewInit {
     return this.filterService.getFilters();
   }
 
+  onPageChanged(event) {
+    window.scrollTo(0, 0);
+    return event;
+  }
 }
