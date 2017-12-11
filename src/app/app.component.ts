@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 declare let jQuery: any;
 
 @Component({
@@ -25,8 +26,12 @@ export class AppComponent {
     }
   ]
 
-  constructor() {
-
+  constructor(private router: Router) {
+    router.events.subscribe((val) => {
+      setTimeout(() => {
+        jQuery('html').animate({ scrollTop: 0 });
+      }, 0)
+    });
   }
 
   showMenu(event): void {
