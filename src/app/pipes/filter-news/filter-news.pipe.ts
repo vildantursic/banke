@@ -7,7 +7,11 @@ import * as _ from 'lodash';
 export class FilterNewsPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return value.filter(article => article.categories.filter(category => args.filter(a => a === category).length !== 0).length !== 0)
+    if (args[0] === 'all') {
+      return value;
+    } else {
+      return value.filter(article => article.slug !== 'ad' ? article.categories.filter(category => args.filter(arg => arg === category).length !== 0).length !== 0 : null)
+    }
   }
 
 }

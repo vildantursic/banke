@@ -1,0 +1,24 @@
+.magazine-width-full {
+  width: 100% !important;
+
+  .magazine-sections {
+    display: flex;
+    flex-direction: row;
+
+    .left {
+      width: 50%;
+    }
+    .right {
+      width: 50%;
+
+    }
+  }
+  .magazine-button-fix {
+    background-color: #f2711c;
+    color: white;
+
+    &:hover {
+      background-color: #d6671b;
+    }
+  }
+}

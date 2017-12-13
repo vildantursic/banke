@@ -1,4 +1,4 @@
-import {Component, AfterViewInit} from '@angular/core';
+import {Component, AfterViewInit, OnInit} from '@angular/core';
 import {FiltersService} from "../../services/filters/filters.service";
 declare let jQuery: any;
 
@@ -7,9 +7,9 @@ declare let jQuery: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnInit {
 
-  articles = [
+  articles: Array<any> = [
     {
       image: 'assets/images/steve.jpg',
       slug: 'neka_vijest',
@@ -171,6 +171,14 @@ export class HomeComponent implements AfterViewInit {
   images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
   constructor(private filterService: FiltersService) { }
+
+  ngOnInit() {
+    for (let i = 4; i <= this.articles.length; i += 4) {
+      this.articles.splice(i, 0, {
+        slug: 'ad'
+      })
+    }
+  }
 
   ngAfterViewInit() {
     jQuery('.ui.sticky')

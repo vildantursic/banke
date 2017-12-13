@@ -11,7 +11,7 @@ export class FiltersService {
     return this.filterValues
   }
   setFilter(value): void {
-    this.filterValues.push(value.name)
+    this.filterValues.push(value)
   }
   removeFilter(): void {
     this.filterValues = []

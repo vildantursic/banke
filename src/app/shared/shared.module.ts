@@ -14,7 +14,7 @@ import { MiniHeaderComponent } from './mini-header/mini-header.component';
 import { KolumnaComponent } from './kolumna/kolumna.component';
 import { GlobalNewsComponent } from './global-news/global-news.component';
 import { MiniSliderComponent } from './mini-slider/mini-slider.component';
-import { SubscribeComponent } from './subscribe/subscribe.component';
+import { MagazineComponent } from './magazine/magazine.component';
 
 @NgModule({
   imports: [
@@ -34,7 +34,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     KolumnaComponent,
     GlobalNewsComponent,
     MiniSliderComponent,
-    SubscribeComponent
+    MagazineComponent
   ],
   exports: [
     HeaderComponent,
@@ -49,8 +49,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     KolumnaComponent,
     GlobalNewsComponent,
     MiniSliderComponent,
-    SubscribeComponent
-
+    MagazineComponent
   ]
 })
 export class SharedModule { }

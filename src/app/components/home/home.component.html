@@ -8,14 +8,24 @@
     </div>
     <div class="main">
       <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
-      <!--<app-article *ngFor="let article of articles | filterNews:getFilters()" [article]="article"></app-article>-->
-      <app-article *ngFor="let article of articles | paginate: { itemsPerPage: 10, currentPage: p }" [article]="article"></app-article>
+      <div  *ngFor="let article of articles | filterNews:getFilters() | paginate: { itemsPerPage: 12, currentPage: p }">
+        <div *ngIf="article.slug != 'ad'; else elseBlock">
+          <app-article [article]="article"></app-article>
+        </div>
+        <ng-template #elseBlock>
+          <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
+        </ng-template>
+      </div>
+
       <div class="pagination">
         <pagination-controls (pageChange)="p = onPageChanged($event)"></pagination-controls>
       </div>
     </div>
     <div class="sidebar">
       <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
+
+      <app-magazine></app-magazine>
+
       <app-mini-slider [images]="images"></app-mini-slider>
       <app-mini-slider [images]="images" [orientation]="'right'"></app-mini-slider>
       <div class="ui banner test ad" data-text="Banner"></div>
