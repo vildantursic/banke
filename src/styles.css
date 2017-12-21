@@ -3,3 +3,13 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.ad {
+  width: 100% !important;
+}
+a[routerLink] {
+  color: black !important;
+}
+a[routerLink]:hover {
+  color: #FF7100 !important;
+}

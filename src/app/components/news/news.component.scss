@@ -45,7 +45,8 @@
 
   @media (max-width: 1080px) {
     margin: 0;
-    width: calc(100% - 20px);
+    width: 100% !important;
+    display: block !important;
     grid-template-columns: 1fr;
     grid-template-areas: "header"
     "main"

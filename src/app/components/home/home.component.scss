@@ -37,6 +37,8 @@
   }
 
   @media (max-width: 1080px) {
+    width: 100% !important;
+    display: block !important;
     margin: 0;
     grid-template-columns: 1fr;
     grid-template-areas: "header"

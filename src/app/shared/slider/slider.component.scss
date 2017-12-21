@@ -272,7 +272,7 @@ svg {
       margin-bottom: 1.5rem;
 
       @include mediaMaxWidth(991px) {
-        display: none;
+        //display: none;
       }
     }
 
@@ -287,7 +287,7 @@ svg {
       color: white;
 
       @include mediaMaxWidth(991px) {
-        display: none;
+        //display: none;
       }
 
       &:before {

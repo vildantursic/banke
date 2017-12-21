@@ -168,7 +168,30 @@ export class HomeComponent implements AfterViewInit, OnInit {
   news = [1, 2, 3];
   interviews = [1, 2, 3];
   globalNews = [1, 2, 3];
-  images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
+  // images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
+
+  banks = [
+    {
+      id: 0,
+      active: true,
+      path: 'assets/images/banks/addiko.png'
+    },
+    {
+      id: 0,
+      active: true,
+      path: 'assets/images/banks/asa.jpg'
+    },
+    {
+      id: 0,
+      active: true,
+      path: 'assets/images/banks/bbi.png'
+    },
+    {
+      id: 0,
+      active: true,
+      path: 'assets/images/banks/nlb.jpg'
+    }
+  ]
 
   constructor(private filterService: FiltersService) { }
 
