@@ -1,6 +1,6 @@
 <div class="slider-wrapper">
   <div id="slider">
-    <figure id="figure">
+    <figure [id]="elementId">
       <img *ngFor="let image of images" [src]="image.path">
     </figure>
   </div>

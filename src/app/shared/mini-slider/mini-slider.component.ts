@@ -9,11 +9,15 @@ export class MiniSliderComponent implements AfterViewInit {
 
   @Input() images = [];
   @Input() orientation;
+  @Input() elementId;
   constructor() { }
 
   ngAfterViewInit() {
-    if (this.orientation === 'right') {
-      document.getElementById('figure').style.animation = '30s slidy2 infinite';
-    }
+    setTimeout(() => {
+      let el = document.getElementById('figure');
+      if (el) {
+       el.style.animation = '30s slidy2 infinite'
+      }
+    })
   }
 }

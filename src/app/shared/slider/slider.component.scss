@@ -270,6 +270,8 @@ svg {
     &-desc {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
+      height: 210px;
+      overflow: hidden;
 
       @include mediaMaxWidth(991px) {
         //display: none;

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 150px;
+  height: auto;
 }
 
 @keyframes slidy {
@@ -42,4 +42,7 @@ div#slider figure {
   text-align: left;
   font-size: 0;
   animation: 30s slidy infinite;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }

@@ -1,6 +1,6 @@
 <div class="ui raised segment global-news">
-  <a routerLink="/news/test">
-    <h4 class="mini-title"><q>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</q></h4>
+  <a routerLink="/news/{{article.slug}}">
+    <h4 class="mini-title"><q>{{article.title}}</q></h4>
   </a>
-  <div class="mini-date">29.07.1989</div>
+  <div class="mini-date">{{article.date}}</div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-kolumna',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./kolumna.component.scss']
 })
 export class KolumnaComponent implements OnInit {
+
+  @Input() article;
 
   constructor() { }
 

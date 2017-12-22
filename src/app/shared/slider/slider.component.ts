@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 declare let jQuery: any;
 
 @Component({
@@ -7,6 +7,8 @@ declare let jQuery: any;
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements AfterViewInit {
+
+  @Input() articles;
 
   constructor() { }
 
