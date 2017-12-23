@@ -4,7 +4,7 @@
   </div>
   <div class="article-content">
     <a routerLink="/news/{{article.slug}}">
-      <h1 class="article-title">{{article.title}}</h1>
+      <h1 class="article-title">{{article.title | textCut:[40]}}</h1>
     </a>
     <div class="article-date">
       {{article.date}} <a class="article-category" *ngFor="let category of article.categories">{{category}}</a>

@@ -14,6 +14,8 @@ import { FilterNewsPipe } from './pipes/filter-news/filter-news.pipe';
 
 import { FiltersService } from './services/filters/filters.service';
 
+import Helpers from "./helpers/helper";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { FiltersService } from './services/filters/filters.service';
     NgxPaginationModule
   ],
   providers: [
-    FiltersService
+    FiltersService,
+    Helpers
   ],
   bootstrap: [AppComponent]
 })

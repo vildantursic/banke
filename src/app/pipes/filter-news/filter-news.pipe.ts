@@ -15,3 +15,14 @@ export class FilterNewsPipe implements PipeTransform {
   }
 
 }
+
+@Pipe({
+  name: 'textCut'
+})
+export class TextCutPipe implements PipeTransform {
+
+  transform(value: any, args?: any): any {
+    return value.split('').length < args[0] ? value : value.split('').slice(0, args[0]).join('') + '...'
+  }
+
+}

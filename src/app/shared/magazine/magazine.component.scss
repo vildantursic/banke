@@ -1,5 +1,6 @@
 .magazine-width-full {
   width: 100% !important;
+  margin-bottom: 15px;
 
   @media (max-width: 800px) {
     margin: 20px !important;
@@ -15,7 +16,9 @@
     }
     .right {
       width: 50%;
-
+      p {
+        padding: 0 15px;
+      }
     }
   }
   .magazine-button-fix {

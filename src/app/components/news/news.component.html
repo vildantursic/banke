@@ -1,7 +1,7 @@
 <div class="ui sticky left">
   <!--<div class="ui wide skyscraper test ad" data-text="Wide Skyscraper"></div>-->
 </div>
-<div id="context">
+<div id="context" *ngIf="article">
   <div class="wrapper">
     <div class="header" [ngStyle]="{'background': 'url(' + article.image + ') center no-repeat', 'background-size': 'cover'}">
       <div class="title">
@@ -21,25 +21,24 @@
 
       <app-magazine></app-magazine>
 
-      <app-mini-slider [images]="images"></app-mini-slider>
-      <app-mini-slider [images]="images" [orientation]="'right'"></app-mini-slider>
+      <app-mini-slider [elementId]="'slider-1'" [images]="banks"></app-mini-slider>
+      <app-mini-slider [elementId]="'slider-2'" [images]="banks" [orientation]="'right'"></app-mini-slider>
       <div class="ui banner test ad" data-text="Banner"></div>
 
       <!-- VIDEO -->
       <app-mini-header [header]="'Video'"></app-mini-header>
-      <app-article-small *ngFor="let article of news"></app-article-small>
+      <app-article-small *ngFor="let article of video.slice(0,3)" [article]="article"></app-article-small>
       <div class="ui banner test ad" data-text="Banner"></div>
 
       <!-- KOLUMNE -->
       <app-mini-header [header]="'Kolumne'"></app-mini-header>
-      <app-kolumna *ngFor="let article of interviews"></app-kolumna>
+      <app-kolumna *ngFor="let article of column.slice(0,3)" [article]="article"></app-kolumna>
       <div class="ui banner test ad" data-text="Banner"></div>
 
       <!-- GLOBAL NEWS -->
       <app-mini-header [header]="'Vijesti iz svijeta'"></app-mini-header>
-      <app-global-news *ngFor="let article of globalNews"></app-global-news>
+      <app-global-news *ngFor="let article of globalNews.slice(0,3)" [article]="article"></app-global-news>
       <div class="ui banner test ad" data-text="Banner"></div>
-
     </div>
     <!-- Long flowing text content !-->
   </div>

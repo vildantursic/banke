@@ -41,6 +41,21 @@ export class AppComponent {
       id: 5,
       active: false,
       name: 'finansije'
+    },
+    {
+      id: 6,
+      active: false,
+      name: 'video'
+    },
+    {
+      id: 7,
+      active: false,
+      name: 'globalNews'
+    },
+    {
+      id: 8,
+      active: false,
+      name: 'column'
     }
   ]
 

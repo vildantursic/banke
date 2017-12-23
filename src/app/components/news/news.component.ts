@@ -1,5 +1,10 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { allArticles } from '../home/articles'
+import { ActivatedRoute } from "@angular/router";
+
 declare let jQuery: any;
+
+import Helpers from "../../helpers/helper";
 
 @Component({
   selector: 'app-news',
@@ -8,28 +13,23 @@ declare let jQuery: any;
 })
 export class NewsComponent implements AfterViewInit {
 
-  article = {
-    image: 'assets/images/steve.jpg',
-    title: 'Neka vijest',
-    content: `
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus faucibus tellus at rutrum. Aliquam sit amet diam purus. In sem turpis, tincidunt id venenatis ac, fringilla molestie lorem. Pellentesque convallis porta sem non ultrices. Vivamus quis urna semper, viverra tortor sed, sodales risus. Donec suscipit, sapien at consequat sodales, ante dui ullamcorper arcu, nec mattis dolor ipsum congue elit. Curabitur dapibus luctus massa, in egestas arcu tempus non. Aenean eleifend est metus, et commodo erat ultrices vel. Curabitur blandit est orci, a porta justo faucibus et. Aliquam laoreet nisl lectus, lacinia feugiat sem consequat ac.</p>
-    <br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus faucibus tellus at rutrum. Aliquam sit amet diam purus. In sem turpis, tincidunt id venenatis ac, fringilla molestie lorem. Pellentesque convallis porta sem non ultrices. Vivamus quis urna semper, viverra tortor sed, sodales risus. Donec suscipit, sapien at consequat sodales, ante dui ullamcorper arcu, nec mattis dolor ipsum congue elit. Curabitur dapibus luctus massa, in egestas arcu tempus non. Aenean eleifend est metus, et commodo erat ultrices vel. Curabitur blandit est orci, a porta justo faucibus et. Aliquam laoreet nisl lectus, lacinia feugiat sem consequat ac.</p>
-    <br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus faucibus tellus at rutrum. Aliquam sit amet diam purus. In sem turpis, tincidunt id venenatis ac, fringilla molestie lorem. Pellentesque convallis porta sem non ultrices. Vivamus quis urna semper, viverra tortor sed, sodales risus. Donec suscipit, sapien at consequat sodales, ante dui ullamcorper arcu, nec mattis dolor ipsum congue elit. Curabitur dapibus luctus massa, in egestas arcu tempus non. Aenean eleifend est metus, et commodo erat ultrices vel. Curabitur blandit est orci, a porta justo faucibus et. Aliquam laoreet nisl lectus, lacinia feugiat sem consequat ac.</p>
-    `,
-    categories: [
-      'biznis', 'finansije', 'banke'
-    ],
-    date: '19.04.1993',
-    author: 'Vildan Tursic'
-  };
-  news = [1, 2, 3];
-  interviews = [1, 2, 3];
-  globalNews = [1, 2, 3];
+  article;
+  slug = '';
+  video = [];
+  column = [];
+  globalNews = [];
   images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private helpers: Helpers) {
+    route.params.subscribe(params => {
+      this.slug = params['slug'];
+      allArticles.forEach(article => {
+        if (this.slug == article.slug) {
+          this.article = article;
+        }
+      })
+    });
+  }
 
   ngAfterViewInit() {
     jQuery('.ui.sticky')
@@ -38,6 +38,13 @@ export class NewsComponent implements AfterViewInit {
         bottomOffset : 50,
         context: '#context'
       })
+
+    setTimeout(() => {
+      console.log(this.helpers.getCategoryArticles(allArticles, 'video'))
+      this.video = this.helpers.getCategoryArticles(allArticles, 'video');
+      this.column = this.helpers.getCategoryArticles(allArticles, 'column');
+      this.globalNews = this.helpers.getCategoryArticles(allArticles, 'globalNews');
+    })
   }
 
 }

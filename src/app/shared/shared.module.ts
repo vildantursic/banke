@@ -15,11 +15,12 @@ import { KolumnaComponent } from './kolumna/kolumna.component';
 import { GlobalNewsComponent } from './global-news/global-news.component';
 import { MiniSliderComponent } from './mini-slider/mini-slider.component';
 import { MagazineComponent } from './magazine/magazine.component';
+import {TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule
   ],
   declarations: [
     HeaderComponent,
@@ -34,7 +35,8 @@ import { MagazineComponent } from './magazine/magazine.component';
     KolumnaComponent,
     GlobalNewsComponent,
     MiniSliderComponent,
-    MagazineComponent
+    MagazineComponent,
+    TextCutPipe
   ],
   exports: [
     HeaderComponent,
