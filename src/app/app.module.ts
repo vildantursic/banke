@@ -31,7 +31,7 @@ import Helpers from "./helpers/helper";
   ],
   providers: [
     FiltersService,
-    Helpers
+    { provide: Helpers, useClass: Helpers }
   ],
   bootstrap: [AppComponent]
 })
