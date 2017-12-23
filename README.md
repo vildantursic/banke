@@ -1,5 +1,7 @@
 # BankeBiznis
 
+[![buddy pipeline](https://app.buddy.works/vildantursic/banke/pipelines/pipeline/67947/badge.svg?token=8b194b73c71da28b98c083ff6c39ea527373e1e872657b0b0266e0064a8e2b88 "buddy pipeline")](https://app.buddy.works/vildantursic/banke/pipelines/pipeline/67947)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
 ## Development server
