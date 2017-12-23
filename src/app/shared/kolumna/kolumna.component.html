@@ -1,9 +1,11 @@
 <div class="ui raised segment mini-article">
   <div class="mini-img">
-    <img [src]="article.image" alt="">
+    <img class="mini-main-image" [src]="article.image" alt="">
   </div>
-  <a routerLink="/news/{{article.slug}}">
-    <h4 class="mini-title">{{article.title}}</h4>
-  </a>
-  <div class="mini-date">{{article.date}}</div>
+  <div class="mini-content">
+    <a routerLink="/news/{{article.slug}}">
+      <h4 class="mini-title">{{article.title}}</h4>
+    </a>
+    <div class="mini-date">{{article.date}}</div>
+  </div>
 </div>

@@ -2,7 +2,8 @@
   margin-bottom: 20px !important;
   background-color: #cdcdcd;
   width: 100%;
-  height: auto;
+  height: 85px;
+  padding: 0;
   display: grid;
   grid-template-columns: 80px calc(100% - 80px);
   grid-template-areas: "mini-img mini-title"
@@ -15,28 +16,37 @@
 
   .mini-img {
     grid-area: mini-img;
-    display: block;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85px;
+    overflow: hidden;
     position: relative;
-    .mini-play{
+    background-color: #FF7100;
+
+    .mini-main-image {
+      height: 100%;
+    }
+    .mini-play-icon {
       position: absolute;
       width: 25px;
       top: calc(50% - (25px / 2));
       left: calc(50% - (25px / 2));
     }
-    img {
-      width: 100%;
+  }
+  .mini-content {
+    padding: 10px;
+
+    .mini-title {
+      grid-area: mini-title;
+      margin: 0 0 0 15px;
+      height: 40px;
+      word-wrap: break-word;
+      overflow: hidden;
     }
-  }
-  .mini-title {
-    grid-area: mini-title;
-    margin: 0 0 0 15px;
-    height: 40px;
-    word-wrap: break-word;
-    overflow: hidden;
-  }
-  .mini-date {
-    grid-area: mini-date;
-    margin: 0 0 0 15px;
+    .mini-date {
+      grid-area: mini-date;
+      margin: 0 0 0 15px;
+    }
   }
 }
