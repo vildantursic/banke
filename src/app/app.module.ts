@@ -14,10 +14,6 @@ import { FilterNewsPipe } from './pipes/filter-news/filter-news.pipe';
 
 import { FiltersService } from './services/filters/filters.service';
 
-import Helpers from "./helpers/helper";
-import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
-import {ShareButtonsModule} from "ngx-sharebuttons";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +28,7 @@ import {ShareButtonsModule} from "ngx-sharebuttons";
     NgxPaginationModule,
   ],
   providers: [
-    FiltersService,
-    { provide: Helpers, useClass: Helpers }
+    FiltersService
   ],
   bootstrap: [AppComponent]
 })
