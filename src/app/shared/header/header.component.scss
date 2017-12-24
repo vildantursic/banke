@@ -7,7 +7,15 @@
   background: linear-gradient(to right, #222222 35% , #8d3100, #ff7100);
   border-radius: 0;
   border: none;
-  padding: 2px;
+  padding: 2px 15%;
+
+  @media (max-width: 1400px) {
+    padding: 2px 5%;
+  }
+
+  @media (max-width: 1080px) {
+    padding: 2px 0;
+  };
 }
 .logo{
   display: flex;

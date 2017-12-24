@@ -287,6 +287,8 @@ svg {
       font-size: 1.3rem;
       perspective: 1000px;
       color: white;
+      width: 100px;
+      text-align: center;
 
       @include mediaMaxWidth(991px) {
         //display: none;
