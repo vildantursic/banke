@@ -23,9 +23,9 @@ import {ShareButtonsModule} from "ngx-sharebuttons";
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule,
-    HttpClientJsonpModule,
-    ShareButtonsModule.forRoot()
+    // HttpClientModule,
+    // HttpClientJsonpModule,
+    // ShareButtonsModule.forRoot()
   ],
   declarations: [
     HeaderComponent,

@@ -1,11 +1,12 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import { FiltersService } from "../../services/filters/filters.service";
+import { FiltersService } from '../../services/filters/filters.service';
 import { cloneDeep } from 'lodash';
 
 declare let jQuery: any;
 
-import Helpers from "../../helpers/helper";
+import Helpers from '../../helpers/helper';
 import { allArticles } from './articles'
+import { allAds } from './ads'
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,15 @@ import { allArticles } from './articles'
 })
 export class HomeComponent implements AfterViewInit, OnInit {
 
+  allFilters = ['all'];
+
   articles = [];
   video = [];
   column = [];
   globalNews = [];
 
-  banks = []
+  banks = [];
+  ads = allAds;
 
   constructor(private filterService: FiltersService, private helpers: Helpers) { }
 
@@ -42,6 +46,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
     document.getElementsByClassName('')
 
     setTimeout(() => {
+      this.filterService.getMessage().subscribe(filter => {
+        this.allFilters = [filter];
+      });
       this.articles = cloneDeep(allArticles);
       this.video = this.helpers.getCategoryArticles(this.articles, 'video');
       this.column = this.helpers.getCategoryArticles(this.articles, 'column');
@@ -72,8 +79,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
     })
   }
 
-  getFilters(): Array<any> {
-    return this.filterService.getFilters();
+  filterNewsOnHeaderSelect(event): void {
+    this.filterService.clearMessage();
+    this.filterService.sendMessage(event);
   }
 
   onPageChanged(event) {
