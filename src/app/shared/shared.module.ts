@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -16,11 +16,16 @@ import { GlobalNewsComponent } from './global-news/global-news.component';
 import { MiniSliderComponent } from './mini-slider/mini-slider.component';
 import { MagazineComponent } from './magazine/magazine.component';
 import {TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
+import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
+import {ShareButtonsModule} from "ngx-sharebuttons";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    ShareButtonsModule.forRoot()
   ],
   declarations: [
     HeaderComponent,
@@ -52,6 +57,7 @@ import {TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
     GlobalNewsComponent,
     MiniSliderComponent,
     MagazineComponent
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class SharedModule { }
