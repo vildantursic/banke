@@ -16,16 +16,11 @@ import { GlobalNewsComponent } from './global-news/global-news.component';
 import { MiniSliderComponent } from './mini-slider/mini-slider.component';
 import { MagazineComponent } from './magazine/magazine.component';
 import {TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
-import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
-import {ShareButtonsModule} from "ngx-sharebuttons";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    // HttpClientModule,
-    // HttpClientJsonpModule,
-    // ShareButtonsModule.forRoot()
+    RouterModule
   ],
   declarations: [
     HeaderComponent,

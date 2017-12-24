@@ -1,10 +1,9 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { allArticles } from '../home/articles'
 import { ActivatedRoute } from "@angular/router";
+import { cloneDeep, filter } from 'lodash';
 
 declare let jQuery: any;
-
-import Helpers from "../../helpers/helper";
 
 @Component({
   selector: 'app-news',
@@ -20,7 +19,7 @@ export class NewsComponent implements AfterViewInit {
   globalNews = [];
   images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
-  constructor(private route: ActivatedRoute, private helpers: Helpers) {
+  constructor(private route: ActivatedRoute) {
     route.params.subscribe(params => {
       this.slug = params['slug'];
       allArticles.forEach(article => {
@@ -40,11 +39,15 @@ export class NewsComponent implements AfterViewInit {
       })
 
     setTimeout(() => {
-      console.log(this.helpers.getCategoryArticles(allArticles, 'video'))
-      this.video = this.helpers.getCategoryArticles(allArticles, 'video');
-      this.column = this.helpers.getCategoryArticles(allArticles, 'column');
-      this.globalNews = this.helpers.getCategoryArticles(allArticles, 'globalNews');
+      console.log(this.getCategoryArticles(allArticles, 'video'))
+      this.video = this.getCategoryArticles(allArticles, 'video');
+      this.column = this.getCategoryArticles(allArticles, 'column');
+      this.globalNews = this.getCategoryArticles(allArticles, 'globalNews');
     })
   }
 
+  getCategoryArticles(articles, type) {
+    const tempArticles = cloneDeep(articles);
+    return tempArticles.filter(article => filter(article.categories, (category) => category === type).length > 0)
+  }
 }

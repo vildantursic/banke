@@ -1,10 +1,9 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { FiltersService } from '../../services/filters/filters.service';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, filter } from 'lodash';
 
 declare let jQuery: any;
 
-import Helpers from '../../helpers/helper';
 import { allArticles } from './articles'
 import { allAds } from './ads'
 
@@ -17,6 +16,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   allFilters = ['all'];
 
+  p;
+
   articles = [];
   video = [];
   column = [];
@@ -25,7 +26,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   banks = [];
   ads = allAds;
 
-  constructor(private filterService: FiltersService, private helpers: Helpers) { }
+  constructor(private filterService: FiltersService) { }
 
   ngOnInit() {
     for (let i = 4; i <= this.articles.length; i += 4) {
@@ -50,9 +51,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
         this.allFilters = [filter];
       });
       this.articles = cloneDeep(allArticles);
-      this.video = this.helpers.getCategoryArticles(this.articles, 'video');
-      this.column = this.helpers.getCategoryArticles(this.articles, 'column');
-      this.globalNews = this.helpers.getCategoryArticles(this.articles, 'globalNews');
+      this.video = this.getCategoryArticles(this.articles, 'video');
+      this.column = this.getCategoryArticles(this.articles, 'column');
+      this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
 
       this.banks = [
         {
@@ -89,5 +90,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
     return event;
   }
 
-
+  getCategoryArticles(articles, type) {
+    const tempArticles = cloneDeep(articles);
+    return tempArticles.filter(article => filter(article.categories, (category) => category === type).length > 0)
+  }
 }
