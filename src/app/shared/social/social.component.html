@@ -1,6 +1,6 @@
 <div *ngIf="slug">
   <a class="share-btn share-btn-inverse share-btn-twitter"
-     [href]="'https://twitter.com/share?url=http://localhost:4200/news/' + slug + '&text=Banke i Biznis&via=sunnyismoi'"
+     [href]="'https://twitter.com/share?url=http://localhost:4200/news/' + slug + '&text=Banke i Biznis&via=bankebiznis'"
      title="Share on Twitter">
     <span class="share-btn-icon"></span>
     <span class="share-btn-text">Twitter</span>
@@ -19,5 +19,10 @@
     <span class="share-btn-icon"></span>
     <span class="share-btn-text">Email</span>
   </a>
+
+  <share-button button="facebook"></share-button>
+  <share-button button="twitter" showName="true">Tweet!</share-button>
+  <share-button button="facebook" showName="true" showCount="true"><b>Share on Facebook</b></share-button>
+  <share-button button="pinterest" showName="true"></share-button>
 
 </div>

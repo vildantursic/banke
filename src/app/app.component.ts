@@ -23,19 +23,7 @@ export class AppComponent {
     {
       id: 2,
       active: false,
-      name: 'biznis',
-      subfilters: [
-        {
-          id: 3,
-          active: false,
-          name: 'banke 1'
-        },
-        {
-          id: 4,
-          active: false,
-          name: 'banke 2'
-        }
-      ]
+      name: 'biznis'
     },
     {
       id: 5,
@@ -64,6 +52,15 @@ export class AppComponent {
       window.scrollTo(0, 0);
     });
     this.fillFilters();
+    filtersService.getMessage().subscribe(f => {
+      if (f !== undefined) {
+        this.filters.forEach(filter => {
+          if (filter.name === f) {
+            this.onFilterClicked(filter.id);
+          }
+        })
+      }
+    });
   }
 
   showMenu(event): void {
@@ -72,43 +69,22 @@ export class AppComponent {
   }
 
   onFilterClicked(id): void {
-    if (id !== 0) {
-      this.filters[0].active = false;
-      this.filters.map(filter => {
-        if (filter.id === id && filter.active) {
-          filter.active = false;
-        } else if (filter.id === id && !filter.active) {
-          filter.active = true;
-        }
-        if (filter.hasOwnProperty('subfilters')) {
-          filter['subfilters'].map(subfilter => {
-            if (subfilter.id === id && subfilter.active) {
-              subfilter.active = false;
-            } else if (subfilter.id === id && !subfilter.active) {
-              subfilter.active = true;
-            }
-          })
-        }
-      })
-    } else {
-      this.filters.map(filter => {
+    console.log(id);
+    this.filters.map(filter => {
+      if (filter.id === id && filter.active) {
         filter.active = false;
-        if (filter.hasOwnProperty('subfilters')) {
-          filter['subfilters'].map(subfilter => {
-            subfilter.active = false;
-          })
-        }
-      })
-      this.filters[0].active = true;
-    }
-    this.fillFilters();
+      } else if (filter.id === id && !filter.active) {
+        filter.active = true;
+      }
+    })
+    // this.fillFilters();
   }
 
   fillFilters(): void {
-    this.filtersService.removeFilter();
+    this.filtersService.clearMessage();
     this.filters.forEach(filter => {
       if (filter.active) {
-        this.filtersService.setFilter(filter.name)
+        this.filtersService.sendMessage(filter.name)
       }
     })
   }

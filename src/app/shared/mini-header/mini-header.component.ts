@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-mini-header',
@@ -6,7 +6,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./mini-header.component.scss']
 })
 export class MiniHeaderComponent implements OnInit {
-  @Input() header
+  @Input() header;
+  @Input() filter;
+
+  @Output() headerSelect: EventEmitter<string> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
