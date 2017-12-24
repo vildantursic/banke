@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+declare let FB: any;
 
 @Component({
   selector: 'app-social',
@@ -12,6 +13,7 @@ export class SocialComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
