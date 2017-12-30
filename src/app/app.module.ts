@@ -10,25 +10,33 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
 
-import { FilterNewsPipe } from './pipes/filter-news/filter-news.pipe';
+import {DateFormatPipe, FilterNewsPipe} from './pipes/filter-news/filter-news.pipe';
 
 import { FiltersService } from './services/filters/filters.service';
+import {BlogService} from "./services/blog/blog.service";
+import {MainService} from "./services/main.service";
+import {HttpClientModule} from "@angular/common/http";
+import {HelperService} from "./services/helpers/helpers.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NewsComponent,
-    FilterNewsPipe
+    FilterNewsPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     SharedModule,
     NgxPaginationModule,
   ],
   providers: [
-    FiltersService
+    FiltersService,
+    MainService,
+    HelperService,
+    BlogService
   ],
   bootstrap: [AppComponent]
 })

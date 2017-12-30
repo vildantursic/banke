@@ -4,8 +4,8 @@ import { cloneDeep, filter } from 'lodash';
 
 declare let jQuery: any;
 
-import { allArticles } from './articles'
 import { allAds } from './ads'
+import {BlogService} from "../../services/blog/blog.service";
 
 @Component({
   selector: 'app-home',
@@ -26,7 +26,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   banks = [];
   ads = allAds;
 
-  constructor(private filterService: FiltersService) { }
+  constructor(private filterService: FiltersService, private blogService: BlogService) { }
 
   ngOnInit() {
     for (let i = 4; i <= this.articles.length; i += 4) {
@@ -37,6 +37,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
+    this.getBlogs();
+
     jQuery('.ui.sticky')
       .sticky({
         offset       : 150,
@@ -50,10 +52,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.filterService.getMessage().subscribe(filter => {
         this.allFilters = [filter];
       });
-      this.articles = cloneDeep(allArticles);
-      this.video = this.getCategoryArticles(this.articles, 'video');
-      this.column = this.getCategoryArticles(this.articles, 'column');
-      this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
+
 
       this.banks = [
         {
@@ -77,6 +76,15 @@ export class HomeComponent implements AfterViewInit, OnInit {
           path: 'assets/images/banks/nlb.jpg'
         }
       ]
+    })
+  }
+
+  getBlogs(): void {
+    this.blogService.getBlogs().subscribe((response: any) => {
+      this.articles = response;
+      this.video = this.getCategoryArticles(this.articles, 'video');
+      this.column = this.getCategoryArticles(this.articles, 'column');
+      this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
     })
   }
 

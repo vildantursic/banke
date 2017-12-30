@@ -6,8 +6,8 @@
     <div class="header" [ngStyle]="{'background': 'url(' + article.image + ') center no-repeat', 'background-size': 'cover'}">
       <div class="title">
         <h1>{{article.title}}</h1>
-        <p>{{article.date}}</p>
-        <p><b>written by:</b> Someone</p>
+        <p>{{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}</p>
+        <p><b>written by:</b> {{article.author}}</p>
       </div>
     </div>
     <div class="main">

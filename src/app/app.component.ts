@@ -52,15 +52,15 @@ export class AppComponent {
       window.scrollTo(0, 0);
     });
     this.fillFilters();
-    filtersService.getMessage().subscribe(f => {
-      if (f !== undefined) {
-        this.filters.forEach(filter => {
-          if (filter.name === f) {
-            this.onFilterClicked(filter.id);
-          }
-        })
-      }
-    });
+    // filtersService.getMessage().subscribe(f => {
+    //   if (f !== undefined) {
+    //     this.filters.forEach(filter => {
+    //       if (filter.name === f) {
+    //         this.onFilterClicked(filter.id);
+    //       }
+    //     })
+    //   }
+    // });
   }
 
   showMenu(event): void {
@@ -77,7 +77,7 @@ export class AppComponent {
         filter.active = true;
       }
     })
-    // this.fillFilters();
+    this.fillFilters();
   }
 
   fillFilters(): void {

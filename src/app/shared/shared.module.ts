@@ -15,12 +15,12 @@ import { KolumnaComponent } from './kolumna/kolumna.component';
 import { GlobalNewsComponent } from './global-news/global-news.component';
 import { MiniSliderComponent } from './mini-slider/mini-slider.component';
 import { MagazineComponent } from './magazine/magazine.component';
-import {TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
+import {DateFormatPipe, TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [
     HeaderComponent,
@@ -36,7 +36,8 @@ import {TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
     GlobalNewsComponent,
     MiniSliderComponent,
     MagazineComponent,
-    TextCutPipe
+    TextCutPipe,
+    DateFormatPipe
   ],
   exports: [
     HeaderComponent,
@@ -51,7 +52,8 @@ import {TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
     KolumnaComponent,
     GlobalNewsComponent,
     MiniSliderComponent,
-    MagazineComponent
+    MagazineComponent,
+    DateFormatPipe
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

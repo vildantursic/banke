@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as _ from 'lodash';
+import * as moment from 'moment';
 
 @Pipe({
   name: 'filterNews'
@@ -26,3 +26,26 @@ export class TextCutPipe implements PipeTransform {
   }
 
 }
+
+@Pipe({
+  name: 'uppercase'
+})
+export class UppercasePipe implements PipeTransform {
+
+  transform(value: any, args?: any): any {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+
+}
+
+@Pipe({
+  name: 'dateFormat'
+})
+export class DateFormatPipe implements PipeTransform {
+
+  transform(value: any, args?: any): any {
+    return moment(value).format(args[0])
+  }
+
+}
+
