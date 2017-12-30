@@ -16,4 +16,8 @@ export class MagazineComponent implements OnInit {
   showPopUp() {
     jQuery('.ui.modal').modal('show');
   }
+
+  subscribeToMagazine(): void {
+    window.open(`mailto:banke@banke-biznis.com?subject=Banke Magazin&body=Zelio/la bih se ...`);
+  }
 }
