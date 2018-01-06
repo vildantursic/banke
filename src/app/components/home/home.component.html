@@ -2,13 +2,16 @@
   <!--<div class="ui wide skyscraper test ad" data-text="Wide Skyscraper"></div>-->
 </div>
 <div id="context">
-  <div class="wrapper">
+  <div class="wrapper" *ngIf="loading">
+    <h1>LOADING</h1>
+  </div>
+  <div class="wrapper" *ngIf="!loading">
     <div class="header" *ngIf="articles.length !== 0">
       <app-slider [articles]="articles.slice(0, 4)"></app-slider>
     </div>
     <div class="main">
-      <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="{'background-image': 'url(' + ads[0].ads[0].image + ')'}"></div>
-      <div  *ngFor="let article of articles | filterNews:allFilters | paginate: { itemsPerPage: 12, currentPage: p }">
+      <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd('top', 0)"></div>
+      <div  *ngFor="let article of articles | sort | filterNews:allFilters | paginate: { itemsPerPage: 12, currentPage: p }">
         <div *ngIf="article.slug != 'ad'; else elseBlock">
           <app-article [article]="article"></app-article>
         </div>
@@ -22,28 +25,28 @@
       </div>
     </div>
     <div class="sidebar">
-      <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd()"></div>
+      <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd('top', 1)"></div>
 
       <app-magazine></app-magazine>
 
       <app-mini-slider [elementId]="'slider-1'" [images]="banks"></app-mini-slider>
       <app-mini-slider [elementId]="'slider-2'" [images]="banks" [orientation]="'right'"></app-mini-slider>
-      <div class="ui banner test ad banner-fix" [ngStyle]="{'background-image': 'url(' + ads[1].ads[0].image + ')'}"></div>
+      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 0)"></div>
 
       <!-- VIDEO -->
       <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'video'" [header]="'Video'"></app-mini-header>
       <app-article-small *ngFor="let article of video.slice(0,3)" [article]="article"></app-article-small>
-      <div class="ui banner test ad banner-fix" [ngStyle]="{'background-image': 'url(' + ads[1].ads[1].image + ')'}"></div>
+      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 1)"></div>
 
       <!-- KOLUMNE -->
       <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'column'" [header]="'Kolumne'"></app-mini-header>
       <app-kolumna *ngFor="let article of column.slice(0,3)" [article]="article"></app-kolumna>
-      <div class="ui banner test ad banner-fix" [ngStyle]="{'background-image': 'url(' + ads[1].ads[2].image + ')'}"></div>
+      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 2)"></div>
 
       <!-- GLOBAL NEWS -->
       <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'globalNews'" [header]="'Vijesti iz svijeta'"></app-mini-header>
       <app-global-news *ngFor="let article of globalNews.slice(0,3)" [article]="article"></app-global-news>
-      <div class="ui banner test ad banner-fix" [ngStyle]="{'background-image': 'url(' + ads[1].ads[3].image + ')'}"></div>
+      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 3)"></div>
 
     </div>
     <!-- Long flowing text content !-->

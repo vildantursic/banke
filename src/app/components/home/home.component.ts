@@ -5,6 +5,7 @@ import { cloneDeep, filter } from 'lodash';
 declare let jQuery: any;
 
 import {BlogService} from "../../services/blog/blog.service";
+import {GeneralService} from "../../services/general/general.service";
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   allFilters = ['all'];
 
   p;
+  loading = true;
 
   articles = [];
   video = [];
@@ -23,20 +25,23 @@ export class HomeComponent implements AfterViewInit, OnInit {
   globalNews = [];
 
   banks = [];
-  ads;
+  ads = [];
 
-  constructor(private filterService: FiltersService, private blogService: BlogService) { }
+  constructor(private filterService: FiltersService,
+              private blogService: BlogService,
+              private generalService: GeneralService) {}
 
   ngOnInit() {
-    for (let i = 4; i <= this.articles.length; i += 4) {
-      this.articles.splice(i, 0, {
-        slug: 'ad'
-      })
-    }
+    this.getAds();
+    this.getBlogs();
+    // for (let i = 4; i <= this.articles.length; i += 4) {
+    //   this.articles.splice(i, 0, {
+    //     slug: 'ad'
+    //   })
+    // }
   }
 
   ngAfterViewInit() {
-    this.getBlogs();
 
     jQuery('.ui.sticky')
       .sticky({
@@ -84,10 +89,13 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.video = this.getCategoryArticles(this.articles, 'video');
       this.column = this.getCategoryArticles(this.articles, 'column');
       this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
+      this.loading = false;
     })
   }
   getAds(): void {
-
+    this.generalService.getAds().subscribe((response: any) => {
+      this.ads = response.data;
+    })
   }
 
   filterNewsOnHeaderSelect(event): void {
@@ -106,16 +114,20 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   setAd(section, number) {
-    let ad = [0, number]
+    if(this.ads.length !== 0) {
+      let ad = [0, number];
 
-    switch (section) {
-      case 'top':
+      if (section === 'top') {
         ad[0] = 0;
-      case 'side':
+      } else {
         ad[0] = 1;
-      default:
-        ad[0] = 0;
+      }
+
+      if (this.ads[ad[0]].ads[ad[1]]) {
+        return {'background-image': `url(${ this.ads[ad[0]].ads[ad[1]].active ? this.ads[ad[0]].ads[ad[1]].image : '' })`}
+      } else {
+        return ''
+      }
     }
-    return {'background-image': `url(${ this.ads[ad[0]].ads[ad[1]].active ? this.ads[ad[0]].ads[ad[1]].image : '' })`}
   }
 }
