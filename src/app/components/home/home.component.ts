@@ -4,7 +4,6 @@ import { cloneDeep, filter } from 'lodash';
 
 declare let jQuery: any;
 
-import { allAds } from './ads'
 import {BlogService} from "../../services/blog/blog.service";
 
 @Component({
@@ -24,7 +23,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   globalNews = [];
 
   banks = [];
-  ads = allAds;
+  ads;
 
   constructor(private filterService: FiltersService, private blogService: BlogService) { }
 
@@ -87,6 +86,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
     })
   }
+  getAds(): void {
+
+  }
 
   filterNewsOnHeaderSelect(event): void {
     this.filterService.clearMessage();
@@ -101,5 +103,19 @@ export class HomeComponent implements AfterViewInit, OnInit {
   getCategoryArticles(articles, type) {
     const tempArticles = cloneDeep(articles);
     return tempArticles.filter(article => filter(article.categories, (category) => category === type).length > 0)
+  }
+
+  setAd(section, number) {
+    let ad = [0, number]
+
+    switch (section) {
+      case 'top':
+        ad[0] = 0;
+      case 'side':
+        ad[0] = 1;
+      default:
+        ad[0] = 0;
+    }
+    return {'background-image': `url(${ this.ads[ad[0]].ads[ad[1]].active ? this.ads[ad[0]].ads[ad[1]].image : '' })`}
   }
 }
