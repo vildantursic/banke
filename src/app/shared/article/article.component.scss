@@ -47,7 +47,12 @@
     padding: 15px;
 
     .article-title {
+      height: 30px;
+      overflow: hidden;
 
+      @media (max-width: 512px) {
+        height: auto;
+      }
     }
     .article-text{
       height: 60px;

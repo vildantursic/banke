@@ -17,7 +17,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
   allFilters = ['all'];
 
   p;
-  loading = true;
 
   articles = [];
   video = [];
@@ -42,7 +41,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-
     jQuery('.ui.sticky')
       .sticky({
         offset       : 150,
@@ -89,12 +87,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.video = this.getCategoryArticles(this.articles, 'video');
       this.column = this.getCategoryArticles(this.articles, 'column');
       this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
-      this.loading = false;
     })
   }
   getAds(): void {
     this.generalService.getAds().subscribe((response: any) => {
-      this.ads = response.data;
+      this.ads = response[0].data;
     })
   }
 

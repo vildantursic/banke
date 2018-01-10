@@ -4,7 +4,7 @@
   </div>
   <div class="article-content">
     <a routerLink="/news/{{article.slug}}">
-      <h1 class="article-title">{{article.title | textCut:[40]}}</h1>
+      <h2 class="article-title">{{article.title | textCut:[40]}}</h2>
     </a>
     <div class="article-date">
       {{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}

@@ -18,13 +18,26 @@
   };
 }
 .logo{
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800');
   display: flex;
   align-items: center;
   justify-content: center;
-  img{
-    height: 25px;
-    margin: auto;
+  color: white;
+  font-size: 35px;
+  font-weight: 800;
+
+  @media (max-width: 512px) {
+    padding: 0 5px;
+  };
+
+  .and {
+    color: #D32F2F;
+    margin: 0 3px;
   }
+  //img{
+  //  height: 25px;
+  //  margin: auto;
+  //}
 }
 
 .dropdown-fix {
