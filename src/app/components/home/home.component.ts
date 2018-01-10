@@ -4,8 +4,8 @@ import { cloneDeep, filter } from 'lodash';
 
 declare let jQuery: any;
 
-import { allAds } from './ads'
 import {BlogService} from "../../services/blog/blog.service";
+import {GeneralService} from "../../services/general/general.service";
 
 @Component({
   selector: 'app-home',
@@ -24,21 +24,23 @@ export class HomeComponent implements AfterViewInit, OnInit {
   globalNews = [];
 
   banks = [];
-  ads = allAds;
+  ads = [];
 
-  constructor(private filterService: FiltersService, private blogService: BlogService) { }
+  constructor(private filterService: FiltersService,
+              private blogService: BlogService,
+              private generalService: GeneralService) {}
 
   ngOnInit() {
-    for (let i = 4; i <= this.articles.length; i += 4) {
-      this.articles.splice(i, 0, {
-        slug: 'ad'
-      })
-    }
+    this.getAds();
+    this.getBlogs();
+    // for (let i = 4; i <= this.articles.length; i += 4) {
+    //   this.articles.splice(i, 0, {
+    //     slug: 'ad'
+    //   })
+    // }
   }
 
   ngAfterViewInit() {
-    this.getBlogs();
-
     jQuery('.ui.sticky')
       .sticky({
         offset       : 150,
@@ -87,6 +89,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
     })
   }
+  getAds(): void {
+    this.generalService.getAds().subscribe((response: any) => {
+      this.ads = response[0].data;
+    })
+  }
 
   filterNewsOnHeaderSelect(event): void {
     this.filterService.clearMessage();
@@ -101,5 +108,23 @@ export class HomeComponent implements AfterViewInit, OnInit {
   getCategoryArticles(articles, type) {
     const tempArticles = cloneDeep(articles);
     return tempArticles.filter(article => filter(article.categories, (category) => category === type).length > 0)
+  }
+
+  setAd(section, number) {
+    if(this.ads.length !== 0) {
+      let ad = [0, number];
+
+      if (section === 'top') {
+        ad[0] = 0;
+      } else {
+        ad[0] = 1;
+      }
+
+      if (this.ads[ad[0]].ads[ad[1]]) {
+        return {'background-image': `url(${ this.ads[ad[0]].ads[ad[1]].active ? this.ads[ad[0]].ads[ad[1]].image : '' })`}
+      } else {
+        return ''
+      }
+    }
   }
 }

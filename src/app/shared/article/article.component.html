@@ -4,13 +4,13 @@
   </div>
   <div class="article-content">
     <a routerLink="/news/{{article.slug}}">
-      <h1 class="article-title">{{article.title | textCut:[40]}}</h1>
+      <h2 class="article-title">{{article.title | textCut:[40]}}</h2>
     </a>
     <div class="article-date">
       {{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}
       <a class="article-category" *ngFor="let category of article.categories">{{category}}</a>
     </div>
-    <p class="article-text">{{article.content}}</p>
+    <p class="article-text" [innerHTML]="article.content"></p>
     <div class="article-social">
       <app-social [slug]="article.slug"></app-social>
     </div>

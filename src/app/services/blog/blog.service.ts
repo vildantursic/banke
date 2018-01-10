@@ -5,7 +5,6 @@ import {MainService} from "../main.service";
 @Injectable()
 export class BlogService {
 
-
   constructor(private service: MainService) { }
 
   /**
