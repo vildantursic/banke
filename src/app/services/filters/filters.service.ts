@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import {MainService} from "../main.service";
 
 @Injectable()
 export class FiltersService {
   private filterValues = new Subject<any>();
 
-  constructor() {
+  constructor(private service: MainService) {
     this.filterValues.next('all');
   }
 
@@ -20,5 +21,13 @@ export class FiltersService {
 
   getMessage(): Observable<any> {
     return this.filterValues.asObservable();
+  }
+
+  /**
+   * Gets array of filters
+   * @returns {Observable<any>}
+   */
+  getFilters(): Observable<any> {
+    return this.service.get(`filters`);
   }
 }

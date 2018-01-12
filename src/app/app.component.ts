@@ -9,45 +9,15 @@ declare let jQuery: any;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  filters = [
-    {
-      id: 0,
-      active: true,
-      name: 'all'
-    },
-    {
-      id: 1,
-      active: false,
-      name: 'banke'
-    },
-    {
-      id: 2,
-      active: false,
-      name: 'biznis'
-    },
-    {
-      id: 5,
-      active: false,
-      name: 'finansije'
-    },
-    {
-      id: 6,
-      active: false,
-      name: 'video'
-    },
-    {
-      id: 7,
-      active: false,
-      name: 'globalNews'
-    },
-    {
-      id: 8,
-      active: false,
-      name: 'column'
-    }
-  ]
+  filters = []
+// {
+//   id: 0,
+//   active: true,
+//   name: 'all'
+// }
 
   constructor(private router: Router, private filtersService: FiltersService) {
+    this.getFilters();
     router.events.subscribe((val) => {
       window.scrollTo(0, 0);
     });
@@ -66,6 +36,25 @@ export class AppComponent {
   showMenu(event): void {
     jQuery('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
     jQuery('.ui.accordion').accordion();
+  }
+
+  getFilters(): void {
+    this.filtersService.getFilters().subscribe((response: any) => {
+      this.filters = response.map((item, i) => {
+        return {
+          id: i,
+          active: false,
+          name: item,
+          disabled: false
+        }
+      });
+      this.filters.splice(0, 1, {
+        id: 1000,
+        active: true,
+        name: 'all',
+        disabled: true
+      })
+    })
   }
 
   onFilterClicked(id): void {

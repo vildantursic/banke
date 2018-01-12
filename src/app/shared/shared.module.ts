@@ -16,11 +16,13 @@ import { GlobalNewsComponent } from './global-news/global-news.component';
 import { MiniSliderComponent } from './mini-slider/mini-slider.component';
 import { MagazineComponent } from './magazine/magazine.component';
 import {DateFormatPipe, TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule
   ],
   declarations: [
     HeaderComponent,

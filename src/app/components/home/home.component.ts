@@ -23,7 +23,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   column = [];
   globalNews = [];
 
-  banks = [];
+  partners = [];
   ads = [];
 
   constructor(private filterService: FiltersService,
@@ -33,6 +33,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.getAds();
     this.getBlogs();
+    this.getPartners();
     // for (let i = 4; i <= this.articles.length; i += 4) {
     //   this.articles.splice(i, 0, {
     //     slug: 'ad'
@@ -54,30 +55,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.filterService.getMessage().subscribe(filter => {
         this.allFilters = [filter];
       });
-
-
-      this.banks = [
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/addiko.png'
-        },
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/asa.jpg'
-        },
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/bbi.png'
-        },
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/nlb.jpg'
-        }
-      ]
     })
   }
 
@@ -92,6 +69,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
   getAds(): void {
     this.generalService.getAds().subscribe((response: any) => {
       this.ads = response[0].data;
+    })
+  }
+  getPartners(): void {
+    this.generalService.getPartners().subscribe((response: any) => {
+      this.partners = response;
     })
   }
 

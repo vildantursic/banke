@@ -3,7 +3,8 @@
 </div>
 <div id="context" *ngIf="article">
   <div class="wrapper">
-    <div class="header" [ngStyle]="{'background': 'url(' + article.image + ') center no-repeat', 'background-size': 'cover'}">
+    <div class="header">
+      <img class="image" [src]="article.image" alt="">
       <div class="title">
         <h1>{{article.title}}</h1>
         <p>{{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}</p>
@@ -21,8 +22,8 @@
 
       <app-magazine></app-magazine>
 
-      <app-mini-slider [elementId]="'slider-1'" [images]="banks"></app-mini-slider>
-      <app-mini-slider [elementId]="'slider-2'" [images]="banks" [orientation]="'right'"></app-mini-slider>
+      <app-mini-slider [elementId]="'slider-1'" [partners]="banks"></app-mini-slider>
+      <app-mini-slider [elementId]="'slider-2'" [partners]="banks" [orientation]="'right'"></app-mini-slider>
       <div class="ui banner test ad" data-text="Banner"></div>
 
       <!-- VIDEO -->

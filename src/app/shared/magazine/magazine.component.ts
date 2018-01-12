@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GeneralService} from "../../services/general/general.service";
 declare let jQuery: any;
 
 @Component({
@@ -8,7 +9,8 @@ declare let jQuery: any;
 })
 export class MagazineComponent implements OnInit {
 
-  constructor() { }
+  email = '';
+  constructor(private generalService: GeneralService) { }
 
   ngOnInit() {
   }
@@ -18,6 +20,9 @@ export class MagazineComponent implements OnInit {
   }
 
   subscribeToMagazine(): void {
-    window.open(`mailto:banke@banke-biznis.com?subject=Banke Magazin&body=Zelio/la bih se ...`);
+    // window.open(`mailto:banke@banke-biznis.com?subject=Banke Magazin&body=Zelio/la bih se ...`);
+    this.generalService.subscribeToMagazine(this.email).subscribe(response => {
+      console.log(response);
+    })
   }
 }

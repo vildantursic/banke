@@ -17,6 +17,7 @@
     </div>
     <ng-template #elseBlock>
       <button class="ui button full-size"
+              [disabled]="filter.disabled"
               [ngClass]="{'toggle': filter.active}"
               (click)="onFilterClicked(filter.id)">{{filter.name}}</button>
     </ng-template>

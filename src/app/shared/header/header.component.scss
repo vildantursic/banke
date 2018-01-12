@@ -25,6 +25,11 @@
   color: white;
   font-size: 35px;
   font-weight: 800;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 
   @media (max-width: 512px) {
     padding: 0 5px;

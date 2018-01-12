@@ -1,6 +1,6 @@
 <div class="ui raised segment article">
   <div class="article-image">
-    <img [src]="article.image" alt="">
+    <img *ngIf="article.image" [src]="article.image" alt="">
   </div>
   <div class="article-content">
     <a routerLink="/news/{{article.slug}}">
