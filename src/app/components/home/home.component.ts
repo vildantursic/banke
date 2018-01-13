@@ -93,7 +93,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   setAd(section, number) {
-    if(this.ads.length !== 0) {
+    if (this.ads.length !== 0) {
       let ad = [0, number];
 
       if (section === 'top') {

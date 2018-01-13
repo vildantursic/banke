@@ -66,7 +66,22 @@
     "sidebar";
   }
 }
+
+
 .leaderbord-fix {
   width: 100% !important;
+  background-position: center !important;
   margin-bottom: 10px !important;
+
+  &:after {
+    content: '' !important;
+  }
+}
+.banner-fix {
+  width: 100% !important;
+  background-position: center !important;
+
+  &:after {
+    content: '' !important;
+  }
 }

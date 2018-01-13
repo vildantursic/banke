@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { cloneDeep, filter } from 'lodash';
 import {BlogService} from "../../services/blog/blog.service";
+import {GeneralService} from "../../services/general/general.service";
 
 declare let jQuery: any;
 
@@ -18,13 +19,19 @@ export class NewsComponent implements AfterViewInit {
   video = [];
   column = [];
   globalNews = [];
+  ads = [];
+  partners = [];
   images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
-  constructor(private route: ActivatedRoute, private blogService: BlogService) {
+  constructor(private route: ActivatedRoute,
+              private blogService: BlogService,
+              private generalService: GeneralService) {
     route.params.subscribe(params => {
       this.slug = params['slug'];
-      console.log(this.slug.normalize("NFKD").replace (/[\u0300-\u036F]/g, ""))
+      console.log(this.slug.normalize('NFKD').replace (/[\u0300-\u036F]/g, ''))
       this.getBlogs();
+      this.getAds();
+      this.getPartners();
     });
   }
 
@@ -55,10 +62,37 @@ export class NewsComponent implements AfterViewInit {
       this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
     })
   }
-
+  getAds(): void {
+    this.generalService.getAds().subscribe((response: any) => {
+      this.ads = response[0].data;
+    })
+  }
+  getPartners(): void {
+    this.generalService.getPartners().subscribe((response: any) => {
+      this.partners = response;
+    })
+  }
 
   getCategoryArticles(articles, type) {
     const tempArticles = cloneDeep(articles);
     return tempArticles.filter(article => filter(article.categories, (category) => category === type).length > 0)
+  }
+
+  setAd(section, number) {
+    if (this.ads.length !== 0) {
+      let ad = [0, number];
+
+      if (section === 'top') {
+        ad[0] = 0;
+      } else {
+        ad[0] = 1;
+      }
+
+      if (this.ads[ad[0]].ads[ad[1]]) {
+        return {'background-image': `url(${ this.ads[ad[0]].ads[ad[1]].active ? this.ads[ad[0]].ads[ad[1]].image : '' })`}
+      } else {
+        return ''
+      }
+    }
   }
 }
