@@ -1,5 +1,10 @@
 <div class="ui right sidebar inverted vertical menu">
-  <div *ngFor="let filter of filters" class="item">
+   <div class="item">
+     <div class="ui input">
+       <input type="text" placeholder="Search..." [(ngModel)]="searchFilters">
+     </div>
+   </div>
+  <div *ngFor="let filter of filters | search:['name', searchFilters]" class="item">
     <div *ngIf="filter.subfilters; else elseBlock">
       <div class="ui accordion">
         <div class="title" style="color: white">

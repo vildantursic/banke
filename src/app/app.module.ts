@@ -10,14 +10,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
 
-import {DateFormatPipe, FilterNewsPipe, SortPipe} from './pipes/filter-news/filter-news.pipe';
+import {DateFormatPipe, FilterNewsPipe, SearchPipe, SortPipe} from './pipes/filter-news/filter-news.pipe';
 
 import { FiltersService } from './services/filters/filters.service';
-import {BlogService} from "./services/blog/blog.service";
-import {MainService} from "./services/main.service";
-import {HttpClientModule} from "@angular/common/http";
-import {HelperService} from "./services/helpers/helpers.service";
-import {GeneralService} from "./services/general/general.service";
+import {BlogService} from './services/blog/blog.service';
+import {MainService} from './services/main.service';
+import {HttpClientModule} from '@angular/common/http';
+import {HelperService} from './services/helpers/helpers.service';
+import {GeneralService} from './services/general/general.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,11 @@ import {GeneralService} from "./services/general/general.service";
     HomeComponent,
     NewsComponent,
     FilterNewsPipe,
-    SortPipe
+    SortPipe,
+    SearchPipe
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

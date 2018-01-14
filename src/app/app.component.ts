@@ -9,7 +9,8 @@ declare let jQuery: any;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  filters = []
+  filters = [];
+  searchFilters = '';
 // {
 //   id: 0,
 //   active: true,

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
-import { sortBy } from 'lodash';
+import { sortBy, filter, includes } from 'lodash';
 
 @Pipe({
   name: 'filterNews'
@@ -60,3 +60,14 @@ export class SortPipe implements PipeTransform {
   }
 }
 
+@Pipe({
+  name: 'search'
+})
+export class SearchPipe implements PipeTransform {
+
+  transform(value: any, args?: any[]): any {
+    return filter(value, function (obj) {
+      return includes(obj[args[0]].toLowerCase(), args[1].toLowerCase())
+    });
+  }
+}

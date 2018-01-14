@@ -22,7 +22,12 @@
   grid-template-areas:   "section1 section2 section3";
 
 }
+.section{
+  display: flex;
+  justify-content: center;
+}
 .section1{
+  justify-content: space-between;
   grid-area: section1;
   display: flex;
   flex-direction: column;
@@ -35,10 +40,60 @@
       width: 150px;
     }
   }
+  .logo{
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800');
+    display: flex;
+    align-items: center;
+    //justify-content: center;
+    color: white;
+    font-size: 35px;
+    font-weight: 800;
+    cursor: pointer;
+    flex-grow: 1;
+    margin-left: 30px;
+
+    &:focus {
+      outline: none;
+    }
+
+    @media (max-width: 512px) {
+      padding: 0 5px;
+    };
+
+    .and {
+      color: #D32F2F;
+      margin: 0 3px;
+    }
+    //img{
+    //  height: 25px;
+    //  margin: auto;
+    //}
+  }
 }
 .section2{
   grid-area: section2;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 40px 0 40px;
+
+  h4{
+    text-decoration: underline;
+  }
+  .space-between{
+    p{
+      margin-bottom: 0;
+    }
+  }
 }
 .section3{
   grid-area: section3;
+  h4{
+    padding-top: 14px;
+    text-decoration: underline;
+  }
+  ul{
+    padding-left: 15px;
+  }
+
 }

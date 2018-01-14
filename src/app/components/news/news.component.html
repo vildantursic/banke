@@ -4,11 +4,18 @@
 <div id="context" *ngIf="article">
   <div class="wrapper">
     <div class="header">
-      <img class="image" [src]="article.image" alt="">
+      <img *ngIf="article.image.length !== 0" class="image" [src]="article.image" alt="">
+      <div *ngIf="article.image.length === 0" class="logo">
+        Banke <span class="and">&</span> Biznis
+      </div>
       <div class="title">
-        <h1>{{article.title}}</h1>
-        <p>{{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}</p>
-        <p><b>written by:</b> {{article.author}}</p>
+        <div>
+          <h1 style="word-break: normal">{{article.title}}
+          </h1>
+        </div>
+        <div>
+          <p class="date"><b>Objavljeno: </b> {{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}</p>
+        </div>
       </div>
     </div>
     <div class="main">

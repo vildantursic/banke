@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #FF7100;
+  background-color: #222222;
 
   @media (max-width: 768px) {
     height: 100vh;
@@ -41,6 +41,16 @@
     background: rgba(255,255,255,0.8);
     height: auto;
     padding: 15px;
+    display: flex;
+
+    div {
+      width: 50%;
+    }
+
+    .date {
+      padding-top: 5px;
+      float: right;
+    }
   }
 }
 
@@ -83,5 +93,28 @@
 
   &:after {
     content: '' !important;
+  }
+}
+
+.logo{
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 65px;
+  font-weight: 800;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (max-width: 512px) {
+    padding: 0 5px;
+  };
+
+  .and {
+    color: #D32F2F;
+    margin: 0 3px;
   }
 }
