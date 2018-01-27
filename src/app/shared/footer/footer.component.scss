@@ -19,8 +19,14 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:   "section1 section2 section3";
+  grid-template-areas: "section1 section2 section3";
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "section1"
+                         "section2"
+                         "section3";
+  }
 }
 .section{
   display: flex;

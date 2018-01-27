@@ -143,12 +143,12 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(233, 156, 126, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }
@@ -161,12 +161,12 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(225, 204, 174, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }
@@ -179,12 +179,12 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(173, 197, 205, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }
@@ -197,12 +197,30 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(203, 198, 195, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
+      }
+    }
+  }
+  &:nth-child(5) {
+    left: 400%;
+
+    .slide__bg {
+      left: -200%;
+      //background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-4.jpg');
+    }
+
+    .slide__overlay-path {
+      fill: rgba(255, 113, 0, 0.8);
+    }
+
+    @include mediaMaxWidth(991px) {
+      .slide__text {
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }

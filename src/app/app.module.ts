@@ -27,7 +27,7 @@ import {FormsModule} from '@angular/forms';
     NewsComponent,
     FilterNewsPipe,
     SortPipe,
-    SearchPipe
+    SearchPipe,
   ],
   imports: [
     FormsModule,

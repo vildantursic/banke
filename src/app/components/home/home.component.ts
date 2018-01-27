@@ -6,6 +6,7 @@ declare let jQuery: any;
 
 import {BlogService} from "../../services/blog/blog.service";
 import {GeneralService} from "../../services/general/general.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -28,9 +29,12 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   constructor(private filterService: FiltersService,
               private blogService: BlogService,
-              private generalService: GeneralService) {}
+              private generalService: GeneralService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => this.p = params['page']);
     this.getAds();
     this.getBlogs();
     this.getPartners();
@@ -84,6 +88,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   onPageChanged(event) {
     window.scrollTo(0, 0);
+    this.router.navigate(['home'], { queryParams: { page: event }})
     return event;
   }
 
@@ -108,5 +113,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
         return ''
       }
     }
+  }
+
+  goToLink(link) {
+    this.router.navigate([link]);
   }
 }

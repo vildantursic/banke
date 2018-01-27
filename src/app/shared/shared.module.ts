@@ -17,6 +17,7 @@ import { MiniSliderComponent } from './mini-slider/mini-slider.component';
 import { MagazineComponent } from './magazine/magazine.component';
 import {DateFormatPipe, TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
 import {FormsModule} from "@angular/forms";
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import {FormsModule} from "@angular/forms";
     MiniSliderComponent,
     MagazineComponent,
     TextCutPipe,
-    DateFormatPipe
+    DateFormatPipe,
+    ListComponent
   ],
   exports: [
     HeaderComponent,
@@ -55,7 +57,8 @@ import {FormsModule} from "@angular/forms";
     GlobalNewsComponent,
     MiniSliderComponent,
     MagazineComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    ListComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

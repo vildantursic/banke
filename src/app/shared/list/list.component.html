@@ -1,0 +1,18 @@
+<app-mini-header (click)="showPopUp()" [header]="title"></app-mini-header>
+
+<div class="ui modal {{title.toLowerCase()}}">
+  <i class="close icon"></i>
+  <div class="header">
+    Lista {{title}}
+  </div>
+  <div class="image content">
+    <ul>
+      <li *ngFor="let item of items"><a [href]="item.url">{{item.text}}</a></li>
+    </ul>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nazad
+    </div>
+  </div>
+</div>

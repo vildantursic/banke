@@ -1,16 +1,21 @@
 <div class="ui raised segment article">
   <div class="article-image">
-    <img *ngIf="article.image" [src]="article.image" alt="">
+    <img *ngIf="article.image.length !== 0" [src]="article.image" alt="">
+    <div *ngIf="article.image.length === 0" class="logo">
+      Banke <span class="and">&</span> Biznis
+    </div>
   </div>
   <div class="article-content">
     <a routerLink="/news/{{article.slug}}">
-      <h2 class="article-title">{{article.title | textCut:[40]}}</h2>
+      <h2 class="article-title">{{article.title | textCut:[100]}}</h2>
     </a>
     <div class="article-date">
       {{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}
-      <a class="article-category" *ngFor="let category of article.categories">{{category}}</a>
+      <!--<a class="article-category" *ngFor="let category of article.categories">{{category}}</a>-->
     </div>
-    <p class="article-text" [innerHTML]="article.content"></p>
+    <p class="article-text">
+      {{ article?.subcontent || 'SUB CONTENT' }}
+    </p>
     <div class="article-social">
       <app-social [slug]="article.slug"></app-social>
     </div>

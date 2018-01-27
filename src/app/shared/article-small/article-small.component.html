@@ -1,6 +1,6 @@
 <div class="ui raised segment mini-article">
   <div class="mini-img">
-    <img class="mini-main-image" [src]="article.image" alt="">
+    <img class="mini-main-image" *ngIf="article.image.length !== 0" [src]="article.image" alt="">
     <img class="mini-play-icon" src="assets/images/play.png" alt="">
   </div>
   <div class="mini-content">

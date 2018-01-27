@@ -4,7 +4,7 @@
 <div id="context">
   <div class="wrapper">
     <div class="header" *ngIf="articles.length !== 0">
-      <app-slider [articles]="articles.slice(0, 4)"></app-slider>
+      <app-slider [articles]="articles.slice(0, 5)"></app-slider>
     </div>
     <div class="main">
       <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd('top', 0)"></div>
@@ -26,8 +26,11 @@
 
       <app-magazine></app-magazine>
 
+      <app-list [title]="'Banke'"></app-list>
       <app-mini-slider [elementId]="'slider-1'" [partners]="partners"></app-mini-slider>
+      <app-list [title]="'Lizing'"></app-list>
       <app-mini-slider [elementId]="'slider-2'" [partners]="partners" [orientation]="'right'"></app-mini-slider>
+
       <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 0)"></div>
 
       <!-- VIDEO -->

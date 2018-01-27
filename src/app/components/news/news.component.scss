@@ -42,9 +42,11 @@
     height: auto;
     padding: 15px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-    div {
-      width: 50%;
+    @media (max-width: 768px) {
+      flex-direction: column;
     }
 
     .date {
