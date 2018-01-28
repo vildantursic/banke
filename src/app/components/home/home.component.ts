@@ -27,6 +27,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
   partners = [];
   ads = [];
 
+  topArticles = [];
+
   constructor(private filterService: FiltersService,
               private blogService: BlogService,
               private generalService: GeneralService,
@@ -65,6 +67,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   getBlogs(): void {
     this.blogService.getBlogs().subscribe((response: any) => {
       this.articles = response;
+      this.topArticles = this.articles.filter(article => article.topNews ? article : null);
       this.video = this.getCategoryArticles(this.articles, 'video');
       this.column = this.getCategoryArticles(this.articles, 'column');
       this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');

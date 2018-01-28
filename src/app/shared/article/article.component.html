@@ -14,7 +14,7 @@
       <!--<a class="article-category" *ngFor="let category of article.categories">{{category}}</a>-->
     </div>
     <p class="article-text">
-      {{ article?.subcontent || 'SUB CONTENT' }}
+      {{ article?.subtitle }}
     </p>
     <div class="article-social">
       <app-social [slug]="article.slug"></app-social>

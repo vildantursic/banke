@@ -4,7 +4,7 @@
 <div id="context">
   <div class="wrapper">
     <div class="header" *ngIf="articles.length !== 0">
-      <app-slider [articles]="articles.slice(0, 5)"></app-slider>
+      <app-slider [articles]="topArticles"></app-slider>
     </div>
     <div class="main">
       <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd('top', 0)"></div>

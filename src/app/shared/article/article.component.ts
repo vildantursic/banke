@@ -9,12 +9,17 @@ export class ArticleComponent implements OnInit {
 
   @Input() article: {
     title: string,
+    subtitle: string,
+    suptitle: string,
     slug: string,
     content: string,
     categories: string[],
     author: string,
     date: string,
-    image: string
+    image: string,
+    topNews: boolean,
+    created_at: string,
+    updated_at: string
   };
 
   constructor() { }
