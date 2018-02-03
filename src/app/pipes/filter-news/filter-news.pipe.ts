@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
 import { sortBy, filter, includes } from 'lodash';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Pipe({
   name: 'filterNews'
@@ -69,5 +70,13 @@ export class SearchPipe implements PipeTransform {
     return filter(value, function (obj) {
       return includes(obj[args[0]].toLowerCase(), args[1].toLowerCase())
     });
+  }
+}
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

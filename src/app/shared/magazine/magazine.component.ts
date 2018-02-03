@@ -16,7 +16,7 @@ export class MagazineComponent implements OnInit {
   }
 
   showPopUp() {
-    jQuery('.ui.modal').modal('show');
+    jQuery('.ui.modal.magazine').modal('show');
   }
 
   subscribeToMagazine(): void {

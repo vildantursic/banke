@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {FiltersService} from "./services/filters/filters.service";
 declare let jQuery: any;
@@ -8,30 +8,19 @@ declare let jQuery: any;
   templateUrl: './app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   filters = [];
   searchFilters = '';
-// {
-//   id: 0,
-//   active: true,
-//   name: 'all'
-// }
 
   constructor(private router: Router, private filtersService: FiltersService) {
-    this.getFilters();
     router.events.subscribe((val) => {
       window.scrollTo(0, 0);
     });
     this.fillFilters();
-    // filtersService.getMessage().subscribe(f => {
-    //   if (f !== undefined) {
-    //     this.filters.forEach(filter => {
-    //       if (filter.name === f) {
-    //         this.onFilterClicked(filter.id);
-    //       }
-    //     })
-    //   }
-    // });
+  }
+
+  ngOnInit() {
+    this.getFilters();
   }
 
   showMenu(event): void {
@@ -40,22 +29,26 @@ export class AppComponent {
   }
 
   getFilters(): void {
-    this.filtersService.getFilters().subscribe((response: any) => {
-      this.filters = response.map((item, i) => {
-        return {
-          id: i,
-          active: false,
-          name: item,
-          disabled: false
+    this.filtersService.getFilters().subscribe((data: any) => {
+      const response = data[data.length - 1];
+      for (const i in response) {
+        if (response.hasOwnProperty(i) && i !== '_id' && i !== '__v') {
+          this.filters.push({
+            id: i,
+            active: false,
+            name: response[i],
+            disabled: false
+          });
         }
-      });
+      }
       this.filters.splice(0, 1, {
         id: 1000,
         active: true,
         name: 'all',
         disabled: true
       })
-    })
+    });
+
   }
 
   onFilterClicked(id): void {

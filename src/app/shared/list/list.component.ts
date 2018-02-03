@@ -16,6 +16,6 @@ export class ListComponent implements OnInit {
   }
 
   showPopUp() {
-    jQuery('.ui.modal.' + this.title.toLowerCase()).modal('show');
+    jQuery('.ui.modal.' + this.title.split(' ')[0].toLowerCase()).modal('show');
   }
 }

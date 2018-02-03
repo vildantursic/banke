@@ -20,7 +20,12 @@ export class NewsComponent implements AfterViewInit {
   column = [];
   globalNews = [];
   ads = [];
-  partners = [];
+  partners = {
+    bank: [],
+    leasing: [],
+    insurance: [],
+    microcredit: []
+  };
   images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
   constructor(private route: ActivatedRoute,
@@ -69,7 +74,17 @@ export class NewsComponent implements AfterViewInit {
   }
   getPartners(): void {
     this.generalService.getPartners().subscribe((response: any) => {
-      this.partners = response;
+      response.forEach(item => {
+        if (item.type === 'bank') {
+          this.partners.bank.push(item);
+        } else if (item.type === 'leasing') {
+          this.partners.leasing.push(item);
+        } else if (item.type === 'microcredit') {
+          this.partners.microcredit.push(item);
+        } else {
+          this.partners.insurance.push(item);
+        }
+      })
     })
   }
 

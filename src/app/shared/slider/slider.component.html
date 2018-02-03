@@ -10,7 +10,12 @@
           <path class="slide__overlay-path" d="M0,0 150,0 400,405 0,405" />
         </svg>
         <div class="slide__text">
-          <p class="slide__text-desc">{{article.title | textCut:[200]}}</p>
+          <p class="slide__text-desc">
+            {{article.suptitle | textCut:[100]}}
+            <br>
+            <br>
+            {{article.title | textCut:[100]}}
+          </p>
           <a class="slide__text-link" routerLink="/news/{{article.slug}}">Vise</a>
         </div>
       </div>

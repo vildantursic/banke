@@ -1,4 +1,4 @@
-<div class="ui right sidebar inverted vertical menu">
+<div class="ui right sidebar inverted vertical menu" *ngIf="filters.length > 2">
    <div class="item">
      <div class="ui input">
        <input type="text" placeholder="Search..." [(ngModel)]="searchFilters">

@@ -1,13 +1,17 @@
 <app-mini-header (click)="showPopUp()" [header]="title"></app-mini-header>
 
-<div class="ui modal {{title.toLowerCase()}}">
+<div class="ui modal {{title.split(' ')[0].toLowerCase()}}">
   <i class="close icon"></i>
   <div class="header">
     Lista {{title}}
   </div>
   <div class="image content">
-    <ul>
-      <li *ngFor="let item of items"><a [href]="item.url">{{item.text}}</a></li>
+    <ul class="list">
+      <li class="item" *ngFor="let item of items">
+        <a target="_blank" [href]="item.url">
+          <img [src]="item.image" alt="">
+        </a>
+      </li>
     </ul>
   </div>
   <div class="actions">

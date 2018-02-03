@@ -24,7 +24,12 @@ export class HomeComponent implements AfterViewInit, OnInit {
   column = [];
   globalNews = [];
 
-  partners = [];
+  partners = {
+    bank: [],
+    leasing: [],
+    insurance: [],
+    microcredit: []
+  };
   ads = [];
 
   topArticles = [];
@@ -80,7 +85,17 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
   getPartners(): void {
     this.generalService.getPartners().subscribe((response: any) => {
-      this.partners = response;
+      response.forEach(item => {
+        if (item.type === 'bank') {
+          this.partners.bank.push(item);
+        } else if (item.type === 'leasing') {
+          this.partners.leasing.push(item);
+        } else if (item.type === 'microcredit') {
+          this.partners.microcredit.push(item);
+        } else {
+          this.partners.insurance.push(item);
+        }
+      })
     })
   }
 
