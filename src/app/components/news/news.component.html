@@ -42,19 +42,18 @@
 
       <!-- VIDEO -->
       <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'video'" [header]="'Video'"></app-mini-header>
-      <app-article-small *ngFor="let article of video.slice(0,3)" [article]="article"></app-article-small>
+      <app-article-small *ngFor="let article of video.slice(video.length - 3, video.length)" [article]="article"></app-article-small>
       <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 1)"></div>
 
       <!-- KOLUMNE -->
-      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'column'" [header]="'Kolumne'"></app-mini-header>
-      <app-kolumna *ngFor="let article of column.slice(0,3)" [article]="article"></app-kolumna>
+      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'column'" [header]="'Kolumne i Analize'"></app-mini-header>
+      <app-kolumna *ngFor="let article of column.slice(column.length - 3, column.length)" [article]="article"></app-kolumna>
       <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 2)"></div>
 
-      <!-- GLOBAL NEWS -->
-      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'globalNews'" [header]="'Vijesti iz svijeta'"></app-mini-header>
-      <app-global-news *ngFor="let article of globalNews.slice(0,3)" [article]="article"></app-global-news>
+      <!-- INTERVIEWS -->
+      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'interviews'" [header]="'Intervjui'"></app-mini-header>
+      <app-global-news *ngFor="let article of interviews.slice(interviews.length - 3, interviews.length)" [article]="article"></app-global-news>
       <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 3)"></div>
-
   </div>
 </div>
 </div>

@@ -13,9 +13,9 @@
       {{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}
       <!--<a class="article-category" *ngFor="let category of article.categories">{{category}}</a>-->
     </div>
-    <p class="article-text">
+    <h3 class="article-text">
       {{ article?.subtitle }}
-    </p>
+    </h3>
     <div class="article-social">
       <app-social [slug]="article.slug"></app-social>
     </div>

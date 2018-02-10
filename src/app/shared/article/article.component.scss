@@ -50,12 +50,14 @@
     .article-title {
       //height: 30px;
       //overflow: hidden;
+      max-width: calc(100% - 40px);
 
       @media (max-width: 512px) {
         height: auto;
       }
     }
     .article-text{
+      max-width: calc(100% - 40px);
       height: 75px;
       overflow: hidden;
       word-wrap: break-word;

@@ -22,7 +22,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   articles = [];
   video = [];
   column = [];
-  globalNews = [];
+  interviews = [];
 
   partners = {
     bank: [],
@@ -74,8 +74,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.articles = response;
       this.topArticles = this.articles.filter(article => article.topNews ? article : null);
       this.video = this.getCategoryArticles(this.articles, 'video');
-      this.column = this.getCategoryArticles(this.articles, 'column');
-      this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
+      this.column = this.getCategoryArticles(this.articles, 'kolumne');
+      this.column = this.column.concat(this.getCategoryArticles(this.articles, 'analize'));
+      this.interviews = this.getCategoryArticles(this.articles, 'interviews');
     })
   }
   getAds(): void {

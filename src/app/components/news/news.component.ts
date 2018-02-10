@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { cloneDeep, filter } from 'lodash';
 import {BlogService} from "../../services/blog/blog.service";
 import {GeneralService} from "../../services/general/general.service";
+import {FiltersService} from "../../services/filters/filters.service";
 
 declare let jQuery: any;
 
@@ -18,7 +19,7 @@ export class NewsComponent implements AfterViewInit {
   slug = '';
   video = [];
   column = [];
-  globalNews = [];
+  interviews = [];
   ads = [];
   partners = {
     bank: [],
@@ -29,6 +30,7 @@ export class NewsComponent implements AfterViewInit {
   images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
   constructor(private route: ActivatedRoute,
+              private filterService: FiltersService,
               private blogService: BlogService,
               private generalService: GeneralService) {
     route.params.subscribe(params => {
@@ -49,10 +51,10 @@ export class NewsComponent implements AfterViewInit {
       })
 
     setTimeout(() => {
-      console.log(this.getCategoryArticles(this.articles, 'video'))
       this.video = this.getCategoryArticles(this.articles, 'video');
-      this.column = this.getCategoryArticles(this.articles, 'column');
-      this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
+      this.column = this.getCategoryArticles(this.articles, 'kolumne');
+      this.column = this.column.concat(this.getCategoryArticles(this.articles, 'analize'));
+      this.interviews = this.getCategoryArticles(this.articles, 'interviews');
     })
   }
 
@@ -63,8 +65,9 @@ export class NewsComponent implements AfterViewInit {
     this.blogService.getBlogs().subscribe((response: any) => {
       this.articles = response;
       this.video = this.getCategoryArticles(this.articles, 'video');
-      this.column = this.getCategoryArticles(this.articles, 'column');
-      this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
+      this.column = this.getCategoryArticles(this.articles, 'kolumne');
+      this.column = this.column.concat(this.getCategoryArticles(this.articles, 'analize'));
+      this.interviews = this.getCategoryArticles(this.articles, 'interviews');
     })
   }
   getAds(): void {
@@ -91,6 +94,11 @@ export class NewsComponent implements AfterViewInit {
   getCategoryArticles(articles, type) {
     const tempArticles = cloneDeep(articles);
     return tempArticles.filter(article => filter(article.categories, (category) => category === type).length > 0)
+  }
+
+  filterNewsOnHeaderSelect(event): void {
+    this.filterService.clearMessage();
+    this.filterService.sendMessage(event);
   }
 
   setAd(section, number) {
