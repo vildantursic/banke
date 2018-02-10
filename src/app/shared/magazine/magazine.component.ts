@@ -23,6 +23,11 @@ export class MagazineComponent implements OnInit {
     // window.open(`mailto:banke@banke-biznis.com?subject=Banke Magazin&body=Zelio/la bih se ...`);
     this.generalService.subscribeToMagazine(this.email).subscribe(response => {
       console.log(response);
+      if (response === 'subscribed') {
+        alert('You have been subscribed to magazine "Banke"')
+      } else {
+        alert('Something went wrong')
+      }
     })
   }
 }

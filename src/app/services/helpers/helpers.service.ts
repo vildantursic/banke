@@ -48,19 +48,7 @@ export class HelperService {
    * @returns response
    */
   checkDataValidity(response): any {
-    if (response.hasOwnProperty('status')) {
-      if (response.status === 400) {
-        setTimeout(() => {
-          // location.reload();
-          console.log('there was error 400');
-        }, 2000);
-        return { data: [] };
-      } else {
-        return response;
-      }
-    } else {
-      return response;
-    }
+    return response;
   }
 
 }
