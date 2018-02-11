@@ -103,3 +103,15 @@
   }
 
 }
+
+.forum-image {
+  height: 28px;
+  width: 24px;
+  display: flex;
+  float: left;
+  margin-right: 7px;
+
+  img {
+    width: 100%;
+  }
+}

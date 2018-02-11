@@ -43,7 +43,7 @@
       <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 1)"></div>
 
       <!-- KOLUMNE -->
-      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'column'" [header]="'Kolumne i Analize'"></app-mini-header>
+      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event, 'analize')" [filter]="'kolumne'" [header]="'Kolumne i Analize'"></app-mini-header>
       <app-kolumna *ngFor="let article of column.slice(column.length - 3, column.length)" [article]="article"></app-kolumna>
       <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 2)"></div>
 

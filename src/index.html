@@ -30,6 +30,14 @@
         xfbml            : true,
         version          : 'v2.11'
       });
+
+      setTimeout(function () {
+        FB.ui(
+          {
+            method: 'share',
+            href: 'https://developers.facebook.com/docs/'
+          }, function(response){});
+      }, 2000);
     };
 
     (function(d, s, id){

@@ -63,9 +63,14 @@ export class HomeComponent implements AfterViewInit, OnInit {
     document.getElementsByClassName('')
 
     setTimeout(() => {
+      this.allFilters = [];
       this.filterService.getMessage().subscribe(filter => {
-        this.allFilters = [filter];
+        if (filter) {
+          this.allFilters.push(filter);
+        }
+        console.log(this.allFilters)
       });
+      this.allFilters.push('all')
     })
   }
 
@@ -100,9 +105,12 @@ export class HomeComponent implements AfterViewInit, OnInit {
     })
   }
 
-  filterNewsOnHeaderSelect(event): void {
+  filterNewsOnHeaderSelect(event, second?): void {
     this.filterService.clearMessage();
     this.filterService.sendMessage(event);
+    if (second) {
+      this.filterService.sendMessage(second);
+    }
   }
 
   onPageChanged(event) {
