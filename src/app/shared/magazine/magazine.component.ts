@@ -9,7 +9,11 @@ declare let jQuery: any;
 })
 export class MagazineComponent implements OnInit {
 
-  email = '';
+  user = {
+    email: '',
+    nameAndSurname: '',
+    address: ''
+  };
   constructor(private generalService: GeneralService) { }
 
   ngOnInit() {
@@ -21,13 +25,17 @@ export class MagazineComponent implements OnInit {
 
   subscribeToMagazine(): void {
     // window.open(`mailto:banke@banke-biznis.com?subject=Banke Magazin&body=Zelio/la bih se ...`);
-    this.generalService.subscribeToMagazine(this.email).subscribe(response => {
-      console.log(response);
-      if (response === 'subscribed') {
-        alert('You have been subscribed to magazine "Banke"')
-      } else {
-        alert('Something went wrong')
-      }
-    })
+    if (this.user.email !== '') {
+      this.generalService.subscribeToMagazine(this.user).subscribe(response => {
+        console.log(response);
+        if (response === 'subscribed') {
+          alert('You have been subscribed to magazine "Banke"')
+        } else {
+          alert('Something went wrong')
+        }
+      })
+    } else {
+      alert('Please fill your email')
+    }
   }
 }

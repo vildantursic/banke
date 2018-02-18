@@ -20,8 +20,14 @@
   </div>
   <div class="image content">
     <div class="ui medium image">
-      <div class="ui input">
-        <input type="text" placeholder="Unesite svoj e-mail" [(ngModel)]="email">
+      <div class="ui input space-bellow">
+        <input type="text" placeholder="E-mail" [(ngModel)]="user.email">
+      </div>
+      <div class="ui input space-bellow">
+        <input type="text" placeholder="Ime i prezime" [(ngModel)]="user.nameAndSurname">
+      </div>
+      <div class="ui input space-bellow">
+        <input type="text" placeholder="Adresa" [(ngModel)]="user.address">
       </div>
     </div>
     <div class="description">

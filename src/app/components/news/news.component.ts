@@ -20,6 +20,7 @@ export class NewsComponent implements AfterViewInit {
   video = [];
   column = [];
   interviews = [];
+  lifestyle = [];
   ads = [];
   partners = {
     bank: [],
@@ -30,7 +31,6 @@ export class NewsComponent implements AfterViewInit {
   images = ['assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg', 'assets/images/unicredit_logo.svg']
 
   constructor(private route: ActivatedRoute,
-              private filterService: FiltersService,
               private blogService: BlogService,
               private generalService: GeneralService) {
     route.params.subscribe(params => {
@@ -68,6 +68,7 @@ export class NewsComponent implements AfterViewInit {
       this.column = this.getCategoryArticles(this.articles, 'kolumne');
       this.column = this.column.concat(this.getCategoryArticles(this.articles, 'analize'));
       this.interviews = this.getCategoryArticles(this.articles, 'interviews');
+      this.lifestyle = this.getCategoryArticles(this.articles, 'lifestyle');
     })
   }
   getAds(): void {
@@ -94,28 +95,5 @@ export class NewsComponent implements AfterViewInit {
   getCategoryArticles(articles, type) {
     const tempArticles = cloneDeep(articles);
     return tempArticles.filter(article => filter(article.categories, (category) => category === type).length > 0)
-  }
-
-  filterNewsOnHeaderSelect(event): void {
-    this.filterService.clearMessage();
-    this.filterService.sendMessage(event);
-  }
-
-  setAd(section, number) {
-    if (this.ads.length !== 0) {
-      let ad = [0, number];
-
-      if (section === 'top') {
-        ad[0] = 0;
-      } else {
-        ad[0] = 1;
-      }
-
-      if (this.ads[ad[0]].ads[ad[1]]) {
-        return {'background-image': `url(${ this.ads[ad[0]].ads[ad[1]].active ? this.ads[ad[0]].ads[ad[1]].image : '' })`}
-      } else {
-        return ''
-      }
-    }
   }
 }

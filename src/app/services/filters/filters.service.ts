@@ -7,9 +7,7 @@ import {MainService} from "../main.service";
 export class FiltersService {
   private filterValues = new Subject<any>();
 
-  constructor(private service: MainService) {
-    this.filterValues.next('all');
-  }
+  constructor(private service: MainService) {}
 
   sendMessage(message: string) {
     this.filterValues.next(message);

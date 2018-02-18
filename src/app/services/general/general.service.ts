@@ -27,10 +27,8 @@ export class GeneralService {
    * Subscribe to magazine
    * @returns {Observable<any>}
    */
-  subscribeToMagazine(email: string): Observable<any> {
-    return this.service.post(`subscribe`, {
-      email: email
-    });
+  subscribeToMagazine(data): Observable<any> {
+    return this.service.post(`subscribe`, data);
   }
 
 }

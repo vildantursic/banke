@@ -1,6 +1,6 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
-import { FiltersService } from '../../services/filters/filters.service';
-import { cloneDeep, filter } from 'lodash';
+import {Component, AfterViewInit, OnInit} from '@angular/core';
+import {FiltersService} from '../../services/filters/filters.service';
+import {cloneDeep, filter} from 'lodash';
 
 declare let jQuery: any;
 
@@ -15,7 +15,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class HomeComponent implements AfterViewInit, OnInit {
 
-  allFilters = ['all'];
+  allFilters = [];
+  searchArticles = '';
 
   p;
 
@@ -23,6 +24,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   video = [];
   column = [];
   interviews = [];
+  lifestyle = [];
 
   partners = {
     bank: [],
@@ -38,39 +40,34 @@ export class HomeComponent implements AfterViewInit, OnInit {
               private blogService: BlogService,
               private generalService: GeneralService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {}
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => this.p = params['page']);
     this.getAds();
     this.getBlogs();
     this.getPartners();
-    // for (let i = 4; i <= this.articles.length; i += 4) {
-    //   this.articles.splice(i, 0, {
-    //     slug: 'ad'
-    //   })
-    // }
   }
 
   ngAfterViewInit() {
     jQuery('.ui.sticky')
       .sticky({
-        offset       : 150,
-        bottomOffset : 50,
+        offset: 150,
+        bottomOffset: 50,
         context: '#context'
       })
 
     document.getElementsByClassName('')
 
     setTimeout(() => {
-      this.allFilters = [];
       this.filterService.getMessage().subscribe(filter => {
         if (filter) {
           this.allFilters.push(filter);
+        } else {
+          this.allFilters = [];
         }
-        console.log(this.allFilters)
       });
-      this.allFilters.push('all')
     })
   }
 
@@ -82,13 +79,16 @@ export class HomeComponent implements AfterViewInit, OnInit {
       this.column = this.getCategoryArticles(this.articles, 'kolumne');
       this.column = this.column.concat(this.getCategoryArticles(this.articles, 'analize'));
       this.interviews = this.getCategoryArticles(this.articles, 'interviews');
+      this.lifestyle = this.getCategoryArticles(this.articles, 'lifestyle');
     })
   }
+
   getAds(): void {
     this.generalService.getAds().subscribe((response: any) => {
       this.ads = response[0].data;
     })
   }
+
   getPartners(): void {
     this.generalService.getPartners().subscribe((response: any) => {
       response.forEach(item => {
@@ -105,17 +105,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
     })
   }
 
-  filterNewsOnHeaderSelect(event, second?): void {
-    this.filterService.clearMessage();
-    this.filterService.sendMessage(event);
-    if (second) {
-      this.filterService.sendMessage(second);
-    }
-  }
-
   onPageChanged(event) {
     window.scrollTo(0, 0);
-    this.router.navigate(['home'], { queryParams: { page: event }})
+    this.router.navigate(['home'], {queryParams: {page: event}})
     return event;
   }
 
@@ -126,7 +118,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   setAd(section, number) {
     if (this.ads.length !== 0) {
-      let ad = [0, number];
+      const ad = [0, number];
 
       if (section === 'top') {
         ad[0] = 0;
@@ -140,9 +132,5 @@ export class HomeComponent implements AfterViewInit, OnInit {
         return ''
       }
     }
-  }
-
-  goToLink(link) {
-    this.router.navigate([link]);
   }
 }

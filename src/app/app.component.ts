@@ -41,18 +41,11 @@ export class AppComponent implements OnInit {
           });
         }
       }
-      this.filters.splice(0, 1, {
-        id: 1000,
-        active: true,
-        name: 'all',
-        disabled: true
-      })
     });
 
   }
 
   onFilterClicked(id): void {
-    console.log(id);
     this.filters.map(filter => {
       if (filter.id === id && filter.active) {
         filter.active = false;

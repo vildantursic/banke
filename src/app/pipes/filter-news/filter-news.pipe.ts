@@ -9,10 +9,14 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class FilterNewsPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    if (args[0] === 'all') {
-      return value;
+    if (args[0].length > 0) {
+      return value.filter(article => {
+        return article.categories.filter(category => {
+          return args[0].filter(arg => arg === category).length !== 0;
+        }).length !== 0
+      })
     } else {
-      return value.filter(article => article.slug !== 'ad' ? article.categories.filter(category => args.filter(arg => arg === category).length !== 0).length !== 0 : null)
+      return value;
     }
   }
 }
@@ -68,7 +72,12 @@ export class SearchPipe implements PipeTransform {
 
   transform(value: any, args?: any[]): any {
     return filter(value, function (obj) {
-      return includes(obj[args[0]].toLowerCase(), args[1].toLowerCase())
+      if (args[2]) {
+        return includes(obj[args[0][0]].toLowerCase(), args[1].toLowerCase()) ||
+               includes(obj[args[0][1]].toLowerCase(), args[1].toLowerCase())
+      } else {
+        return includes(obj[args[0]].toLowerCase(), args[1].toLowerCase())
+      }
     });
   }
 }

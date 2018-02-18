@@ -1,6 +1,3 @@
-<div class="ui sticky left">
-  <!--<div class="ui wide skyscraper test ad" data-text="Wide Skyscraper"></div>-->
-</div>
 <div id="context">
   <div class="wrapper">
     <div class="header" *ngIf="articles.length !== 0">
@@ -8,7 +5,15 @@
     </div>
     <div class="main">
       <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd('top', 0)"></div>
-      <div  *ngFor="let article of articles | sort | filterNews:allFilters | paginate: { itemsPerPage: 12, currentPage: p }">
+      <div class="ui input full-size space-bellow">
+        <input class="full-size" type="text" placeholder="Pretraga" [(ngModel)]="searchArticles">
+      </div>
+      <div
+        *ngFor="let article of articles |
+                               search:[['title', 'content'], searchArticles, true] |
+                               sort |
+                               filterNews:[allFilters] |
+                               paginate: { itemsPerPage: 12, currentPage: p }">
         <div *ngIf="article.slug != 'ad'; else elseBlock">
           <app-article [article]="article"></app-article>
         </div>
@@ -22,37 +27,13 @@
       </div>
     </div>
     <div class="sidebar">
-      <div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd('top', 1)"></div>
-
-      <app-magazine></app-magazine>
-
-      <app-list [title]="'Banke'" [items]="partners.bank"></app-list>
-      <app-mini-slider [elementId]="'slider-1'" [partners]="partners.bank"></app-mini-slider>
-      <app-list [title]="'Lizing drustva'" [items]="partners.leasing"></app-list>
-      <app-mini-slider [elementId]="'slider-2'" [partners]="partners.leasing" [orientation]="'right'"></app-mini-slider>
-      <app-list [title]="'Mikrokreditna drustva'" [items]="partners.microcredit"></app-list>
-      <app-mini-slider [elementId]="'slider-3'" [partners]="partners.microcredit"></app-mini-slider>
-      <app-list [title]="'Osiguranja'" [items]="partners.insurance"></app-list>
-      <app-mini-slider [elementId]="'slider-4'" [partners]="partners.insurance"></app-mini-slider>
-
-      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 0)"></div>
-
-      <!-- VIDEO -->
-      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'video'" [header]="'Video'"></app-mini-header>
-      <app-article-small *ngFor="let article of video.slice(video.length - 3, video.length)" [article]="article"></app-article-small>
-      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 1)"></div>
-
-      <!-- KOLUMNE -->
-      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event, 'analize')" [filter]="'kolumne'" [header]="'Kolumne i Analize'"></app-mini-header>
-      <app-kolumna *ngFor="let article of column.slice(column.length - 3, column.length)" [article]="article"></app-kolumna>
-      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 2)"></div>
-
-      <!-- INTERVIEWS -->
-      <app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'interviews'" [header]="'Intervjui'"></app-mini-header>
-      <app-global-news *ngFor="let article of interviews.slice(interviews.length - 3, interviews.length)" [article]="article"></app-global-news>
-      <div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 3)"></div>
-
+      <app-sidebar [ads]="ads"
+                   [partners]="partners"
+                   [video]="video"
+                   [column]="column"
+                   [interviews]="interviews"
+                   [lifestyle]="lifestyle">
+      </app-sidebar>
     </div>
-    <!-- Long flowing text content !-->
   </div>
 </div>

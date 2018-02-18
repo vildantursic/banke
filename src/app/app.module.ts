@@ -10,8 +10,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
 
-import {DateFormatPipe, FilterNewsPipe, SafePipe, SearchPipe, SortPipe} from './pipes/filter-news/filter-news.pipe';
-
 import { FiltersService } from './services/filters/filters.service';
 import {BlogService} from './services/blog/blog.service';
 import {MainService} from './services/main.service';
@@ -25,10 +23,6 @@ import {FormsModule} from '@angular/forms';
     AppComponent,
     HomeComponent,
     NewsComponent,
-    FilterNewsPipe,
-    SortPipe,
-    SearchPipe,
-    SafePipe
   ],
   imports: [
     FormsModule,
