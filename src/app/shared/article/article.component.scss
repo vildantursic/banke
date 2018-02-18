@@ -36,26 +36,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FF7100;
+    background-color: #222222;
 
     img {
       height: 100%;
     }
   }
-  .article-content{
+  .article-content {
+    position: relative;
     width: calc(100% - 27%);
     padding: 15px;
 
     .article-title {
-      height: 30px;
-      overflow: hidden;
+      //height: 30px;
+      //overflow: hidden;
+      max-width: calc(100% - 40px);
 
       @media (max-width: 512px) {
         height: auto;
       }
     }
     .article-text{
-      height: 60px;
+      max-width: calc(100% - 40px);
+      height: 75px;
       overflow: hidden;
       word-wrap: break-word;
       text-overflow: ellipsis;
@@ -66,6 +69,33 @@
     .article-category {
       margin-left: 5px;
     }
+    .article-social {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
   }
 }
 
+.logo{
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 25px;
+  font-weight: 800;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (max-width: 512px) {
+    padding: 0 5px;
+  };
+
+  .and {
+    color: #D32F2F;
+    margin: 0 3px;
+  }
+}

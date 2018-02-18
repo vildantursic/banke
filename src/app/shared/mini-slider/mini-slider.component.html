@@ -1,7 +1,7 @@
 <div class="slider-wrapper">
   <div id="slider">
     <figure [id]="elementId">
-      <img *ngFor="let image of images" [src]="image.path">
+      <img *ngFor="let partner of partners" [src]="partner.image" (click)="goToPartner(partner.url)">
     </figure>
   </div>
 

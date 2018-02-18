@@ -13,3 +13,11 @@ a[routerLink] {
 a[routerLink]:hover {
   color: #FF7100 !important;
 }
+
+.full-size {
+  width: 100% !important;
+}
+
+.space-bellow {
+  margin-bottom: 15px;
+}

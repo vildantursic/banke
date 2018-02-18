@@ -7,7 +7,7 @@ import {Component, Input, AfterViewInit} from '@angular/core';
 })
 export class MiniSliderComponent implements AfterViewInit {
 
-  @Input() images = [];
+  @Input() partners = [];
   @Input() orientation;
   @Input() elementId;
   constructor() { }
@@ -19,5 +19,9 @@ export class MiniSliderComponent implements AfterViewInit {
        el.style.animation = '30s slidy2 infinite'
       }
     })
+  }
+
+  goToPartner(url): void {
+    window.open(url,'_blank');
   }
 }

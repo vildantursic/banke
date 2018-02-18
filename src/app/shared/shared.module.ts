@@ -1,7 +1,10 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
+import { ListComponent } from './list/list.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ArticleComponent } from './article/article.component';
@@ -15,12 +18,20 @@ import { KolumnaComponent } from './kolumna/kolumna.component';
 import { GlobalNewsComponent } from './global-news/global-news.component';
 import { MiniSliderComponent } from './mini-slider/mini-slider.component';
 import { MagazineComponent } from './magazine/magazine.component';
-import {DateFormatPipe, TextCutPipe} from "../pipes/filter-news/filter-news.pipe";
+import {
+  DateFormatPipe,
+  FilterNewsPipe,
+  SafePipe,
+  SearchPipe,
+  SortPipe,
+  TextCutPipe
+} from '../pipes/filter-news/filter-news.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule
   ],
   declarations: [
     HeaderComponent,
@@ -37,7 +48,13 @@ import {DateFormatPipe, TextCutPipe} from "../pipes/filter-news/filter-news.pipe
     MiniSliderComponent,
     MagazineComponent,
     TextCutPipe,
-    DateFormatPipe
+    DateFormatPipe,
+    ListComponent,
+    SidebarComponent,
+    FilterNewsPipe,
+    SortPipe,
+    SearchPipe,
+    SafePipe
   ],
   exports: [
     HeaderComponent,
@@ -53,7 +70,13 @@ import {DateFormatPipe, TextCutPipe} from "../pipes/filter-news/filter-news.pipe
     GlobalNewsComponent,
     MiniSliderComponent,
     MagazineComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    ListComponent,
+    SidebarComponent,
+    FilterNewsPipe,
+    SortPipe,
+    SearchPipe,
+    SafePipe
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

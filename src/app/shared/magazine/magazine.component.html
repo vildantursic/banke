@@ -2,7 +2,7 @@
   <div class="content">
     <!--<div class="header">Preuzmite nas magazin</div>-->
     <div class="description magazine-sections">
-      <a class="magazine" target="_blank" href="http://45.76.90.178:4000/assets/images/Banke_190w.pdf">
+      <a class="magazine" target="_blank" href="http://45.76.90.178:7000/pdfPreview/8619e14396942ded1876239571f5d5ef1514934784106.pdf">
         <img width="200" src="assets/images/pdf_image.png" alt="">
       </a>
     </div>
@@ -13,23 +13,31 @@
   </div>
 </div>
 
-<div class="ui modal">
+<div class="ui modal magazine">
   <i class="close icon"></i>
   <div class="header">
     Zahtjev za Banke mjesečni list
   </div>
   <div class="image content">
     <div class="ui medium image">
-      <div class="ui input">
-        <input type="text" placeholder="Unesite svoj e-mail">
+      <div class="ui input space-bellow">
+        <input type="text" placeholder="E-mail" [(ngModel)]="user.email">
+      </div>
+      <div class="ui input space-bellow">
+        <input type="text" placeholder="Ime i prezime" [(ngModel)]="user.nameAndSurname">
+      </div>
+      <div class="ui input space-bellow">
+        <input type="text" placeholder="Adresa" [(ngModel)]="user.address">
       </div>
     </div>
     <div class="description">
       <p>
-        Postovanje cijenjeni korisnici, trenutnu predplatu na nas magazin mozete izvrsiti direktno slanjem zahtjeva na mail
-        <a href="">banke@banke-biznis.com</a> ili klikom na "Posalji zahtjev za otvaranje vec popunjenog mail-a"
+        Postovanje cijenjeni korisnici,
         <br>
-        Nasi uposlenici ce vas kontaktirati u roku od 48h
+        Zahtjev za predplatu na magazin Banke se aktivira unosonjem vase email adrese u predvidjeno polje,
+        <br>
+        Nakon sto vas nase osoblje kontaktira i potvrdi vase informacije slanjem svakog sljedeceg email-a dobit ce te povratni email
+        na vasu adresu sa linkom za skidanje PDF-a magazina i direktni link na stranici za slidanje istog.
       </p>
     </div>
   </div>

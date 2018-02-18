@@ -1,0 +1,43 @@
+<div class="ui leaderboard test ad leaderbord-fix" [ngStyle]="setAd('top', 1)"></div>
+
+<app-magazine></app-magazine>
+
+<app-mini-header (click)="goToForum()" [header]="'Forum'"></app-mini-header>
+<app-list [title]="'Banke'" [items]="partners.bank"></app-list>
+<app-mini-slider [elementId]="'slider-1'" [partners]="partners.bank"></app-mini-slider>
+<app-list [title]="'Lizing drustva'" [items]="partners.leasing"></app-list>
+<app-mini-slider [elementId]="'slider-2'" [partners]="partners.leasing" [orientation]="'right'"></app-mini-slider>
+<app-list [title]="'Mikrokreditna drustva'" [items]="partners.microcredit"></app-list>
+<app-mini-slider [elementId]="'slider-3'" [partners]="partners.microcredit"></app-mini-slider>
+<app-list [title]="'Osiguranja'" [items]="partners.insurance"></app-list>
+<app-mini-slider [elementId]="'slider-4'" [partners]="partners.insurance"></app-mini-slider>
+
+<div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 0)"></div>
+
+<!-- VIDEO -->
+<app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'video'"
+                 [header]="'Video'"></app-mini-header>
+<app-article-small *ngFor="let article of video.slice(video.length - 3, video.length) | sort"
+                   [article]="article"></app-article-small>
+<div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 1)"></div>
+
+<!-- KOLUMNE -->
+<app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event, 'analize')" [filter]="'kolumne'"
+                 [header]="'Kolumne i Analize'"></app-mini-header>
+<app-kolumna *ngFor="let article of column.slice(column.length - 3, column.length) | sort"
+             [article]="article"></app-kolumna>
+<div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 2)"></div>
+
+<!-- INTERVIEWS -->
+<app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'interviews'"
+                 [header]="'Intervjui'"></app-mini-header>
+<app-global-news *ngFor="let article of interviews.slice(interviews.length - 3, interviews.length) | sort"
+                 [article]="article"></app-global-news>
+<div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 3)"></div>
+
+<!-- LIFESTYLE -->
+<app-mini-header (headerSelect)="filterNewsOnHeaderSelect($event)" [filter]="'lifestyle'"
+                 [header]="'Life Style'"></app-mini-header>
+<app-global-news *ngFor="let article of lifestyle.slice(lifestyle.length - 3, lifestyle.length) | sort"
+                 [article]="article"></app-global-news>
+<div class="ui banner test ad banner-fix" [ngStyle]="setAd('side', 3)"></div>

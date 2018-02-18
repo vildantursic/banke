@@ -143,12 +143,12 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(233, 156, 126, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }
@@ -161,12 +161,12 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(225, 204, 174, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }
@@ -179,12 +179,12 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(173, 197, 205, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }
@@ -197,12 +197,30 @@ svg {
     }
 
     .slide__overlay-path {
-      fill: rgb(255, 113, 0);
+      fill: rgba(255, 113, 0, 0.8);
     }
 
     @include mediaMaxWidth(991px) {
       .slide__text {
-        background-color: rgba(203, 198, 195, 0.8);
+        background-color: rgba(255, 113, 0, 0.8);
+      }
+    }
+  }
+  &:nth-child(5) {
+    left: 400%;
+
+    .slide__bg {
+      left: -200%;
+      //background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-4.jpg');
+    }
+
+    .slide__overlay-path {
+      fill: rgba(255, 113, 0, 0.8);
+    }
+
+    @include mediaMaxWidth(991px) {
+      .slide__text {
+        background-color: rgba(255, 113, 0, 0.8);
       }
     }
   }
@@ -240,7 +258,7 @@ svg {
     width: 25%;
     bottom: 15%;
     left: 12%;
-    color: #fff;
+    color: black;
     transition: transform 0.5s 0.8s, opacity 0.5s 0.8s;
     will-change: transform, opacity;
     transform: translateY(-50%);
@@ -280,6 +298,8 @@ svg {
 
     &-link {
       width: 150px;
+      border: 3px solid #222222;
+      background-color: transparent;
       text-align: center;
       z-index: 5;
       display: inline-block;
@@ -287,32 +307,16 @@ svg {
       padding: 0.5rem;
       cursor: pointer;
       font-size: 1.3rem;
-      perspective: 1000px;
-      color: white;
-      width: 100px;
-      text-align: center;
+      color: #222222;
+      transition: ease .3s;
 
       @include mediaMaxWidth(991px) {
         //display: none;
       }
 
-      &:before {
-        z-index: -1;
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #222222;
-        transform-origin: 50% 100%;
-        transform: rotateX(-85deg);
-        transition: transform 0.3s;
-        will-change: transform;
-      }
-
-      &:hover:before {
-        transform: rotateX(0);
+      &:hover {
+        background-color: #222222;
+        color: white;
       }
     }
   }

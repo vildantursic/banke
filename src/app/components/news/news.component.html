@@ -1,13 +1,19 @@
-<div class="ui sticky left">
-  <!--<div class="ui wide skyscraper test ad" data-text="Wide Skyscraper"></div>-->
-</div>
 <div id="context" *ngIf="article">
   <div class="wrapper">
-    <div class="header" [ngStyle]="{'background': 'url(' + article.image + ') center no-repeat', 'background-size': 'cover'}">
+    <div class="header">
+      <img *ngIf="article.image.length !== 0" class="image" [src]="article.image" alt="">
+      <div *ngIf="article.image.length === 0" class="logo">
+        Banke <span class="and">&</span> Biznis
+      </div>
       <div class="title">
-        <h1>{{article.title}}</h1>
-        <p>{{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}</p>
-        <p><b>written by:</b> {{article.author}}</p>
+        <div>
+          <h1 style="word-break: normal">{{article.title}}
+          </h1>
+        </div>
+        <div>
+          <p class="date"><b>Objavljeno: </b> {{article.created_at || article.updated_at | dateFormat:['DD MMM YYYY']}}
+          </p>
+        </div>
       </div>
     </div>
     <div class="main">
@@ -17,29 +23,13 @@
       </div>
     </div>
     <div class="sidebar">
-      <div class="ui leaderboard test ad leaderbord-fix" data-text="Leaderboard"></div>
-
-      <app-magazine></app-magazine>
-
-      <app-mini-slider [elementId]="'slider-1'" [images]="banks"></app-mini-slider>
-      <app-mini-slider [elementId]="'slider-2'" [images]="banks" [orientation]="'right'"></app-mini-slider>
-      <div class="ui banner test ad" data-text="Banner"></div>
-
-      <!-- VIDEO -->
-      <app-mini-header [header]="'Video'"></app-mini-header>
-      <app-article-small *ngFor="let article of video.slice(0,3)" [article]="article"></app-article-small>
-      <div class="ui banner test ad" data-text="Banner"></div>
-
-      <!-- KOLUMNE -->
-      <app-mini-header [header]="'Kolumne'"></app-mini-header>
-      <app-kolumna *ngFor="let article of column.slice(0,3)" [article]="article"></app-kolumna>
-      <div class="ui banner test ad" data-text="Banner"></div>
-
-      <!-- GLOBAL NEWS -->
-      <app-mini-header [header]="'Vijesti iz svijeta'"></app-mini-header>
-      <app-global-news *ngFor="let article of globalNews.slice(0,3)" [article]="article"></app-global-news>
-      <div class="ui banner test ad" data-text="Banner"></div>
+      <app-sidebar [ads]="ads"
+                   [partners]="partners"
+                   [video]="video"
+                   [column]="column"
+                   [interviews]="interviews"
+                   [lifestyle]="lifestyle">
+      </app-sidebar>
     </div>
-    <!-- Long flowing text content !-->
   </div>
 </div>

@@ -1,0 +1,17 @@
+.list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .item {
+    width: calc(100% / 2);
+    margin: 15px 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}

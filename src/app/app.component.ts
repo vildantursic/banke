@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {FiltersService} from "./services/filters/filters.service";
 declare let jQuery: any;
@@ -8,59 +8,19 @@ declare let jQuery: any;
   templateUrl: './app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
-  filters = [
-    {
-      id: 0,
-      active: true,
-      name: 'all'
-    },
-    {
-      id: 1,
-      active: false,
-      name: 'banke'
-    },
-    {
-      id: 2,
-      active: false,
-      name: 'biznis'
-    },
-    {
-      id: 5,
-      active: false,
-      name: 'finansije'
-    },
-    {
-      id: 6,
-      active: false,
-      name: 'video'
-    },
-    {
-      id: 7,
-      active: false,
-      name: 'globalNews'
-    },
-    {
-      id: 8,
-      active: false,
-      name: 'column'
-    }
-  ]
+export class AppComponent implements OnInit {
+  filters = [];
+  searchFilters = '';
 
   constructor(private router: Router, private filtersService: FiltersService) {
     router.events.subscribe((val) => {
       window.scrollTo(0, 0);
     });
     this.fillFilters();
-    // filtersService.getMessage().subscribe(f => {
-    //   if (f !== undefined) {
-    //     this.filters.forEach(filter => {
-    //       if (filter.name === f) {
-    //         this.onFilterClicked(filter.id);
-    //       }
-    //     })
-    //   }
-    // });
+  }
+
+  ngOnInit() {
+    this.getFilters();
   }
 
   showMenu(event): void {
@@ -68,8 +28,24 @@ export class AppComponent {
     jQuery('.ui.accordion').accordion();
   }
 
+  getFilters(): void {
+    this.filtersService.getFilters().subscribe((data: any) => {
+      const response = data[data.length - 1];
+      for (const i in response) {
+        if (response.hasOwnProperty(i) && i !== '_id' && i !== '__v') {
+          this.filters.push({
+            id: i,
+            active: false,
+            name: response[i],
+            disabled: false
+          });
+        }
+      }
+    });
+
+  }
+
   onFilterClicked(id): void {
-    console.log(id);
     this.filters.map(filter => {
       if (filter.id === id && filter.active) {
         filter.active = false;

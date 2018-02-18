@@ -1,11 +1,12 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
-import { FiltersService } from '../../services/filters/filters.service';
-import { cloneDeep, filter } from 'lodash';
+import {Component, AfterViewInit, OnInit} from '@angular/core';
+import {FiltersService} from '../../services/filters/filters.service';
+import {cloneDeep, filter} from 'lodash';
 
 declare let jQuery: any;
 
 import {BlogService} from "../../services/blog/blog.service";
 import {GeneralService} from "../../services/general/general.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -14,37 +15,46 @@ import {GeneralService} from "../../services/general/general.service";
 })
 export class HomeComponent implements AfterViewInit, OnInit {
 
-  allFilters = ['all'];
+  allFilters = [];
+  searchArticles = '';
 
   p;
 
   articles = [];
   video = [];
   column = [];
-  globalNews = [];
+  interviews = [];
+  lifestyle = [];
 
-  banks = [];
+  partners = {
+    bank: [],
+    leasing: [],
+    insurance: [],
+    microcredit: []
+  };
   ads = [];
+
+  topArticles = [];
 
   constructor(private filterService: FiltersService,
               private blogService: BlogService,
-              private generalService: GeneralService) {}
+              private generalService: GeneralService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => this.p = params['page']);
     this.getAds();
     this.getBlogs();
-    // for (let i = 4; i <= this.articles.length; i += 4) {
-    //   this.articles.splice(i, 0, {
-    //     slug: 'ad'
-    //   })
-    // }
+    this.getPartners();
   }
 
   ngAfterViewInit() {
     jQuery('.ui.sticky')
       .sticky({
-        offset       : 150,
-        bottomOffset : 50,
+        offset: 150,
+        bottomOffset: 50,
         context: '#context'
       })
 
@@ -52,56 +62,52 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
     setTimeout(() => {
       this.filterService.getMessage().subscribe(filter => {
-        this.allFilters = [filter];
-      });
-
-
-      this.banks = [
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/addiko.png'
-        },
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/asa.jpg'
-        },
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/bbi.png'
-        },
-        {
-          id: 0,
-          active: true,
-          path: 'assets/images/banks/nlb.jpg'
+        if (filter) {
+          this.allFilters.push(filter);
+        } else {
+          this.allFilters = [];
         }
-      ]
+      });
     })
   }
 
   getBlogs(): void {
     this.blogService.getBlogs().subscribe((response: any) => {
       this.articles = response;
+      this.topArticles = this.articles.filter(article => article.topNews ? article : null);
       this.video = this.getCategoryArticles(this.articles, 'video');
-      this.column = this.getCategoryArticles(this.articles, 'column');
-      this.globalNews = this.getCategoryArticles(this.articles, 'globalNews');
+      this.column = this.getCategoryArticles(this.articles, 'kolumne');
+      this.column = this.column.concat(this.getCategoryArticles(this.articles, 'analize'));
+      this.interviews = this.getCategoryArticles(this.articles, 'interviews');
+      this.lifestyle = this.getCategoryArticles(this.articles, 'lifestyle');
     })
   }
+
   getAds(): void {
     this.generalService.getAds().subscribe((response: any) => {
       this.ads = response[0].data;
     })
   }
 
-  filterNewsOnHeaderSelect(event): void {
-    this.filterService.clearMessage();
-    this.filterService.sendMessage(event);
+  getPartners(): void {
+    this.generalService.getPartners().subscribe((response: any) => {
+      response.forEach(item => {
+        if (item.type === 'bank') {
+          this.partners.bank.push(item);
+        } else if (item.type === 'leasing') {
+          this.partners.leasing.push(item);
+        } else if (item.type === 'microcredit') {
+          this.partners.microcredit.push(item);
+        } else {
+          this.partners.insurance.push(item);
+        }
+      })
+    })
   }
 
   onPageChanged(event) {
     window.scrollTo(0, 0);
+    this.router.navigate(['home'], {queryParams: {page: event}})
     return event;
   }
 
@@ -111,8 +117,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   setAd(section, number) {
-    if(this.ads.length !== 0) {
-      let ad = [0, number];
+    if (this.ads.length !== 0) {
+      const ad = [0, number];
 
       if (section === 'top') {
         ad[0] = 0;
